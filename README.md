@@ -8,6 +8,7 @@ restricting access to the system for non-admins.
 - Node Js
 - Express Js
 - SQL
+- Bcrypt
 
 ## How to Start
 - Clone the repo.
