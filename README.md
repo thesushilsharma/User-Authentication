@@ -1,5 +1,5 @@
 # User-Authentication
-Authenticate Users With Node ExpressJS
+restricting access to the system for non-admins.
 
 ## Prerequisites
 - Xampp for SQL database
