@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+</head>
+<body>
+  <h1>Register Page</h1>
+  <form action="/createUser" method="POST" >
+    <div class="error" style="background-color: red;"></div><br>
+    <label for="user">Username</label><br>
+    <input type="text" name="user" id="user" required/><br>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" id="password" required><br>
+    <input type="submit" value="register"><br>
+  </form>
+  <a href="/login">Already registered? Login</a>
+
+</body>
+</html>
