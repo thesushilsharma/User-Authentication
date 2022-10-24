@@ -12,6 +12,6 @@ restricting access to the system for non-admins.
 
 ## How to Start
 - Clone the repo.
-- Run `npm i`
+- Run `npm i` -> dependencies (express, mysql, ejs, bcrypt, express-session) and devDependencies (nodemon, dotenv)
 - Run `node start`
 - Server will be running at `locahost:3000`
