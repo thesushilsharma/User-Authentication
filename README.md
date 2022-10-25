@@ -2,13 +2,13 @@
 restricting access to the system for non-admins.
 
 ## Prerequisites
-- Xampp for SQL database
+- [Xampp](https://www.apachefriends.org/) for database 
 
 ## Dependencies 
-- Node Js
-- Express Js
-- SQL
-- Bcrypt
+- [Node Js](https://nodejs.org/en/)
+- [Express Js](https://expressjs.com/)
+- [MySQL](https://www.npmjs.com/package/mysql)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ## How to Start
 - Clone the repo.
