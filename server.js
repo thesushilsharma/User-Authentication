@@ -23,6 +23,7 @@ db.getConnection((err, connection) => {
     console.log("Connection has been established successfully: " + connection.threadId)
 })
 
+//CREATE TABLE `test`.`project` (`user` INT(7) NOT NULL AUTO_INCREMENT , `password` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `name` VARCHAR(255) NOT NULL , PRIMARY KEY (`user`), UNIQUE `email` (`email`)) ENGINE = InnoDB;
 const port = process.env.PORT
 app.listen(port,
     () => console.log(`Server Started on port ${port}...`))
@@ -48,11 +49,9 @@ app.get("/createUser", (req, res) => res.render("register"))
 app.get("/login", (req, res) => res.render("login"))
 // Route to Dashboard Page
 app.get("/dashboard", (req, res) => {
-    if(req.session.user)
-    {
+    if (req.session.user) {
         res.render("dashboard", { user: req.session.user })
-    }else 
-    {
+    } else {
         res.send("Unauthorize User")
     }
 })
@@ -68,6 +67,8 @@ app.get("/logout", (req, res) => res.redirect("/"))
 app.post("/createUser", async (req, res) => {
     const user = req.body.user;
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const name = req.body.name;
+    const email = req.body.email;
     db.getConnection(async (err, connection) => {
         if (err) throw (err)
         await connection.query("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
@@ -80,7 +81,7 @@ app.post("/createUser", async (req, res) => {
                 res.sendStatus(409)
             }
             else {
-                await connection.query('INSERT INTO project (user, password) VALUES (?,?)', [user, hashedPassword], (err, result) => {
+                await connection.query('INSERT INTO project (user, password, name, email) VALUES (?,?,?,?)', [user, hashedPassword, name, email], (err, result) => {
                     connection.release()
                     if (err) throw (err)
                     console.log("--------> Created new User")
