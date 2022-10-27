@@ -4,20 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushil Sharma | Dashboard</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
-    <div id="login">
-        <div>
-            <h3>Welcome to Dashboard</h3>
-            <h5>
-                <%= locals.user ? user : "User" %> is logged in!
-            </h5>
-            <a href="/logout">Logout</a>
-        </div>
-    </div>
-
+    <header>
+        <nav>
+            <h1>Tron</h1>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article>
+                <h3>Welcome to User Dashboard</h3>
+                <h5>
+                    <%= locals.user ? user : "User" %> is logged in!
+                </h5>
+            </article>
+            <aside>
+                <a href="/logout">Logout</a>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        <small>
+            © 2022 Tron
+        </small>
+    </footer>
 </body>
 
 </html>
