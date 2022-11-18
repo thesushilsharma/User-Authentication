@@ -6,30 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create an Account</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto|Sriracha&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-
-  <h1>Join the Tron community</h1>
-  <p>Create An Account</p>
-  <form action="/createUser" method="POST">
-    <fieldset>
-      <legend>Required fields are followed by <abbr title="required">*</abbr>.</legend>
-      <label for="user">Student Id*</label><br>
-      <input type="text" name="user" id="user" placeholder="Enter your student id" required><br>
-      <label for="password">Password*</label><br>
-      <input type="password" name="password" id="password" placeholder="Enter your password" required><br>
-      <label for="name">Full Name*</label><br>
-      <input type="text" name="name" id="name" placeholder="Enter your name" required><br>
-      <label for="email">University Email*</label> <br>
-      <input type="email" name="email" id="email" placeholder="Enter your University email" required><br><br>
-      <input type="checkbox" id="agree" checked required>
-      <label for="agree">Agreed to terms and conditions</label><br><br>
-      <input type="submit" value="Create An Account"><br>
-    </fieldset>
-  </form>
-  <a href="/login">Already registered? Login</a>
-
+  <section class="text-gray-400 bg-gray-900 body-font">
+    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Join the Tron community</h1>
+    <p class="leading-relaxed text-base text-center">Create An Account</p>
+    <form action="/createUser" method="POST" class="flex flex-col text-center w-full mb-12">
+      <fieldset class="container px-5 py-24 mx-auto">
+        <legend>Required fields are followed by <abbr title="required">*</abbr>.</legend>
+        <label for="user" class="leading-7 text-sm text-gray-400">Student Id*</label><br>
+        <input type="text" name="user" id="user" placeholder="Enter your student id"
+          class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br>
+        <label for="password" class="leading-7 text-sm text-gray-400">Password*</label><br>
+        <input type="password" name="password" id="password" placeholder="Enter your password"
+          class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br>
+        <label for="name" class="leading-7 text-sm text-gray-400">Full Name*</label><br>
+        <input type="text" name="name" id="name" placeholder="Enter your name"
+          class=" placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br>
+        <label for="email" class="leading-7 text-sm text-gray-400">University Email*</label> <br>
+        <input type="email" name="email" id="email" placeholder="Enter your University email"
+          class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br><br>
+        <input type="checkbox" id="agree" checked required>
+        <label for="agree">Agreed to terms and conditions</label><br><br>
+        <input
+          class="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
+          type="submit" value="Create An Account"><br>
+          <a class="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
+        href="/login">Already registered? Login</a>
+      </fieldset>
+    </form>
+  </section>
 </body>
 
 </html>
