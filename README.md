@@ -7,7 +7,7 @@ restricting access to the system for non-admins.
 ## Dependencies 
 - [Node Js](https://nodejs.org/en/)
 - [Express Js](https://expressjs.com/)
-- [MySQL](https://www.npmjs.com/package/mysql)
+- [MySQL2](https://www.npmjs.com/package/mysql2)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ## How to Start
