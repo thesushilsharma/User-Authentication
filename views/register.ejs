@@ -16,10 +16,90 @@
     <form action="/createUser" method="POST" class="flex flex-col text-center w-full mb-12">
       <fieldset class="container px-5 py-24 mx-auto">
         <legend>Required fields are followed by <abbr title="required">*</abbr>.</legend>
-        <label for="user" class="leading-7 text-sm text-gray-400">Student Id*</label><br>
+        <!-- <label for="user" class="leading-7 text-sm text-gray-400">Student Id*</label><br>
         <input type="text" name="user" id="user" placeholder="Enter your student id"
           class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-          required><br>
+          required><br> -->
+        <label for='stdid'>Student id*</label>
+        <input type='text' id='stdid' name='student id' placeholder='Enter your university student id'
+          title='please enter number only' required='required'><br>
+
+        <label for='stdid'>Choose your university from below*</label>
+        <select name='uni' id='singleSelectTextDDJS' class='form-control' onchange='singleSelectChangeText()'
+          placeholder='open to choose your university'>
+          <option> open to choose your university</option>
+          <option value='ADU'> Al Dar University College </option>
+          <option value='AFU'> Al Falah University </option>
+          <option value='AGU'> Al Ghurair University </option>
+          <option value='AIMS'> Allied Institute of Management Studies (AIMS), Dubai </option>
+          <option value='ACD'> American College of Dubai </option>
+          <option value='AUD'> American University in Dubai </option>
+          <option value='AUE'> American University in the Emirates </option>
+          <option value='AMITY'> Amity University Dubai </option>
+          <option value='AEI'> Atlas Educational Institute – Karama, Dubai Campus </option>
+          <option value='BUC'> Biotechnology University College, Dubai </option>
+          <option value='BITSD'> Birla Institute of Technology & Science, Pilani – Dubai </option>
+          <option value='BOL'> Brentwood Open Learning College </option>
+          <option value='BUD'> British University in Dubai </option>
+          <option value='CUD'> Canadian University Of Dubai </option>
+          <option value='CDC'> Capital Dubai Campus </option>
+          <option value='CBS'> Cass Business School </option>
+          <option value='DMC'> Dubai Medical College for Girls </option>
+          <option value='DDM'> Dubai School of Dental Medicine </option>
+          <option value='DSG'> Dubai School of Government </option>
+          <option value='DUC'> Dubai University College </option>
+          <option value='EAH'> The Emirates Academy of Hospitality Management </option>
+          <option value='EAU'> Emirates Aviation University (formerly Emirates Aviation College) </option>
+          <option value='ECM'> Emirates College for Management & Information Technology </option>
+          <option value='EBF'> Emirates Institute for Banking and Financial Studies (EIBFS) – Dubai branch </option>
+          <option value='EUC'> European University College (formerly Nicolas & Asp University College) </option>
+          <option value='HBM'> Hamdan Bin Mohammed e-University </option>
+          <option value='HW'> Heriot-Watt University Dubai </option>
+          <option value='HIB'> Hult International Business School </option>
+          <option value='IIM'> IIM Indore </option>
+          <option value='IMT'> Institute of Management Technology, Dubai </option>
+          <option value='IHC'> International Horizons College – Dubai </option>
+          <option value='IASC'> Islamic & Arabic Studies College Dubai </option>
+          <option value='IAU'> Islamic Azad University, Dubai </option>
+          <option value='JU'> Jumeira University </option>
+          <option value='LHR'> London Human Resources Institute, Dubai Centre, Knowledge Village </option>
+          <option value='MGU'> Mahatma Gandhi University </option>
+          <option value='MAP'> Make-Up Atelier Paris school in Dubai </option>
+          <option value='MUB'> Manchester University Business School </option>
+          <option value='MANI'> Manipal University </option>
+          <option value='MSU'> Middlesex University– Dubai Campus </option>
+          <option value='MODUL'> MODUL University Dubai– Dubai Campus of MODUL University Vienna </option>
+          <option value='MURDOCH'> Murdoch University Dubai </option>
+          <option value='RIT'> Rochester Institute of Technology – Dubai (RIT Dubai) </option>
+          <option value='SPJ'> S P Jain School of Global Management– Dubai </option>
+          <option value='SAE'> SAE Institute </option>
+          <option value='SBU'> Shahid Beheshti University, Dubai </option>
+          <option value='SZAB'> Shaheed Zulfikar Ali Bhutto Institute of Science and Technology(SZABIST) </option>
+          <option value='SUC'> Skyline University College </option>
+          <option value='SUD'> Synergy University Dubai Campus </option>
+          <option value='UEI'> Universal Empire Institute of Medical Sciences </option>
+          <option value='UAD'> University of Atlanta Dubai </option>
+          <option value='UOD'> University of Dubai </option>
+          <option value='UMS'> University of Modern Sciences </option>
+          <option value='USB'> University of Strathclyde Business School – Dubai Campus </option>
+          <option value='UOW'> University of Waterloo </option>
+          <option value='UOWD'> University of Wollongong in Dubai </option>
+          <option value='WINGS'> Wings University </option>
+        </select><br>
+        <label for="user"> your username for this website will be </label>
+        <input type="text" name="user" id="user" class='form-control' placeholder='get your username based on option select'
+          readonly><br>
+        <script>
+          function singleSelectChangeText() {
+            //Getting Value
+            var selObj = document.getElementById('singleSelectTextDDJS');
+            var selValue = selObj.options[selObj.selectedIndex].value;
+            var stdid = document.getElementById('stdid').value;
+            var userid = selValue + stdid;
+            //Setting Value
+            document.getElementById('user').value = userid;
+          }     
+        </script>
         <label for="password" class="leading-7 text-sm text-gray-400">Password*</label><br>
         <input type="password" name="password" id="password" placeholder="Enter your password"
           class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -37,8 +117,8 @@
         <input
           class="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
           type="submit" value="Create An Account"><br>
-          <a class="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
-        href="/login">Already registered? Login</a>
+        <a class="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
+          href="/login">Already registered? Login</a>
       </fieldset>
     </form>
   </section>
