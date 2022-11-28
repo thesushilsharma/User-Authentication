@@ -3,7 +3,7 @@ const app = express()
 const bcrypt = require("bcrypt")
 const path = require('path');
 const session = require('express-session');
-const mysql = require("mysql")
+const mysql = require('mysql2');
 const dotenv = require("dotenv").config()
 
 const DB_HOST = process.env.DB_HOST
