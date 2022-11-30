@@ -56,7 +56,7 @@ app.post("/createUser", async (req, res) => {
     const email = req.body.email;
     db.getConnection(async (err, connection) => {
         if (err) throw (err)
-        await connection.excu("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
+        await connection.execute("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
             if (err) throw (err)
             console.log("------> Search Results")
             console.log(result.length)
@@ -66,7 +66,7 @@ app.post("/createUser", async (req, res) => {
                 res.sendStatus(409)
             }
             else {
-                await connection.excu('INSERT INTO project (user, password, name, email) VALUES (?,?,?,?)', [user, hashedPassword, name, email], (err, result) => {
+                await connection.execute('INSERT INTO project (user, password, name, email) VALUES (?,?,?,?)', [user, hashedPassword, name, email], (err, result) => {
                     connection.release()
                     if (err) throw (err)
                     console.log("--------> Created new User")
@@ -75,7 +75,7 @@ app.post("/createUser", async (req, res) => {
                     //res.sendStatus(201)
                 })
             }
-        }) //end of connection.excu()
+        }) //end of connection.execute()
     }) //end of db.getConnection()
 }) //end of app.post()
 
@@ -86,7 +86,7 @@ app.post("/login", (req, res) => {
     const password = req.body.password
     db.getConnection(async (err, connection) => {
         if (err) throw (err)
-        await connection.excu("Select * from project where user = ?", [user], async (err, result) => {
+        await connection.execute("Select * from project where user = ?", [user], async (err, result) => {
             connection.release()
 
             if (err) throw (err)
@@ -109,6 +109,6 @@ app.post("/login", (req, res) => {
                     res.send("Password incorrect!")
                 } //end of bcrypt.compare()
             }//end of User exists i.e. results.length==0
-        }) //end of connection.excu()
+        }) //end of connection.execute()
     }) //end of db.connection()
 }) //end of app.post()
