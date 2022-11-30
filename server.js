@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 const path = require('path');
 const session = require('express-session');
 const mysql = require('mysql2');
-const dotenv = require("dotenv").config()
+require("dotenv").config();
 
 const DB_HOST = process.env.DB_HOST
 const DB_USER = process.env.DB_USER
@@ -73,7 +73,7 @@ app.post("/createUser", async (req, res) => {
     const email = req.body.email;
     db.getConnection(async (err, connection) => {
         if (err) throw (err)
-        await connection.query("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
+        await connection.excu("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
             if (err) throw (err)
             console.log("------> Search Results")
             console.log(result.length)
@@ -83,7 +83,7 @@ app.post("/createUser", async (req, res) => {
                 res.sendStatus(409)
             }
             else {
-                await connection.query('INSERT INTO project (user, password, name, email) VALUES (?,?,?,?)', [user, hashedPassword, name, email], (err, result) => {
+                await connection.excu('INSERT INTO project (user, password, name, email) VALUES (?,?,?,?)', [user, hashedPassword, name, email], (err, result) => {
                     connection.release()
                     if (err) throw (err)
                     console.log("--------> Created new User")
@@ -92,7 +92,7 @@ app.post("/createUser", async (req, res) => {
                     //res.sendStatus(201)
                 })
             }
-        }) //end of connection.query()
+        }) //end of connection.excu()
     }) //end of db.getConnection()
 }) //end of app.post()
 
@@ -103,7 +103,7 @@ app.post("/login", (req, res) => {
     const password = req.body.password
     db.getConnection(async (err, connection) => {
         if (err) throw (err)
-        await connection.query("Select * from project where user = ?", [user], async (err, result) => {
+        await connection.excu("Select * from project where user = ?", [user], async (err, result) => {
             connection.release()
 
             if (err) throw (err)
@@ -126,6 +126,6 @@ app.post("/login", (req, res) => {
                     res.send("Password incorrect!")
                 } //end of bcrypt.compare()
             }//end of User exists i.e. results.length==0
-        }) //end of connection.query()
+        }) //end of connection.excu()
     }) //end of db.connection()
 }) //end of app.post()
