@@ -42,6 +42,8 @@ app.get("/dashboard", (req, res) => {
 })
 
 app.get("/thankyou-page", (req, res) => res.render("thankyou-page"))
+app.get("/quest", (req, res) => res.render("quest"))
+app.get("/quests", (req, res) => res.render("quests"))
 
 app.get("/logout", (req, res) => res.redirect("/"))
 //app.get("/admin", adminAuth, (req, res) => res.render("admin"))
