@@ -15,3 +15,10 @@ restricting access to the system for non-admins.
 - Run `npm i` -> dependencies (express, mysql, ejs, bcrypt, express-session) and devDependencies (nodemon, dotenv)
 - Run `node start`
 - Server will be running at `locahost:3000`
+
+## Use Case
+- Academic Learning
+- Track the progress
+- Train remotely with maximum efficiency
+- Keep the learners engaged and motivated
+- Use updated content
