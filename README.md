@@ -1,5 +1,5 @@
 # User-Authentication
-restricting access to the system for non-admins.
+A virtual learning environment that offers a variety of flexible online tools to support distant learning and a playground to practice cyber skills.
 
 ## Prerequisites
 - [Xampp](https://www.apachefriends.org/) for database 
