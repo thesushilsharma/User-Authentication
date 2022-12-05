@@ -21,9 +21,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+// Static Files
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
+
 
 app.set("view engine", "ejs")
 // Route to Homepage
