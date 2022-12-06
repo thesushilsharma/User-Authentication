@@ -1,0 +1,126 @@
+/* body {
+  font: 15px arial, sans-serif;
+  background-color: #262626;
+  padding-top: 15px;
+  padding-bottom: 15px;
+ 
+} */
+
+#bodybox {
+    margin: auto;
+    max-width: 550px;
+    font: 15px arial, sans-serif;
+    background-color: white;
+    opacity: 0.8;
+    border-style: transparent;
+    border-width: 1px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 15px;
+  }
+  
+  #chatborder {
+    border-style: solid;
+    opacity: 0.5;
+    background-color: #f6f9f6;
+    opacity: 0.9;
+    border-width: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 15px;
+    border-radius: 15px;
+  }
+  
+  .chatlog {
+     font: 15px arial, sans-serif;
+  }
+  
+  #chatbox {
+    font: 17px arial, sans-serif;
+    height: 22px;
+    width: 100%;
+    text-transform: lowercase;
+  
+  }
+  
+  h1 {
+    margin: auto;
+  }
+  
+  pre {
+    background-color: #f0f0f0;
+    margin-left: 20px;
+    
+    
+  }
+  /*------------------------*/
+  
+  #player_wrapper,#player,.overlay{
+    min-width: 100%;
+      min-height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: -1;
+  }
+  
+  
+  #player_wrapper {
+    overflow:hidden;
+  }
+  
+  
+  .textanim-container {
+    position: relative;
+    max-width: 250px;
+    min-height: 250px;
+    margin: auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    top: 1050px;
+    opacity: 0.9;
+    
+  
+   
+  }
+  
+  .textanim-title {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    transition: 0.5s;
+    color: yellow;
+  }
+  
+  .textanim-container:hover .textanim-title {
+    top: 10px;
+    transform: translateY(0);
+    color:blue;
+  }
+  
+  .textanim-hidden {
+    position: absolute;
+    top: 400px;
+    opacity: 0.5;
+    transition: 0.8s;
+    text-align: center;
+  }
+  
+  .textanim-container:hover .textanim-hidden {
+    top: 50%;
+    transform: translateY(-50%);
+    color: red;
+  }
