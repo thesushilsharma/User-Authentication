@@ -530,7 +530,7 @@
                 </li>
                 <li class="nav__item">
                     <a href="#hoi" class="nav__link">
-                        <span class="nav__text" src="home.html">
+                        <span class="nav__text" src="/logout">
                             Log out
                         </span>
                     </a>
@@ -567,6 +567,9 @@
 
         <!-- <span class='video-game-button'>A</span>
       <span class='video-game-button'>B</span>   -->
+        <p>
+            <%= locals.user ? user : "User" %> is logged in!
+        </p>
 
 
         <table style="width:100%">
