@@ -20,12 +20,14 @@
         <input type="text" name="user" id="user" placeholder="Enter your student id"
           class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           required><br> -->
-        <label for='stdid'>Student id*</label>
+        <label for='stdid' class="leading-7 text-sm text-gray-400">Student id*</label>
         <input type='text' id='stdid' name='student id' placeholder='Enter your university student id'
-          title='please enter number only' required='required'><br>
+          title='please enter number only' required='required'
+          class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br>
 
-        <label for='stdid'>Choose your university from below*</label>
-        <select name='uni' id='singleSelectTextDDJS' class='form-control' onchange='singleSelectChangeText()'
+        <label for='stdid' class="leading-7 text-sm text-gray-400">Choose your university from below*</label>
+        <select name='uni' id='singleSelectTextDDJS' onchange='singleSelectChangeText()'
           placeholder='open to choose your university'>
           <option> open to choose your university</option>
           <option value='ADU'> Al Dar University College </option>
@@ -86,9 +88,10 @@
           <option value='UOWD'> University of Wollongong in Dubai </option>
           <option value='WINGS'> Wings University </option>
         </select><br>
-        <label for="user"> your username for this website will be </label>
-        <input type="text" name="user" id="user" class='form-control' placeholder='get your username based on option select'
-          readonly><br>
+        <label for="user" class="leading-7 text-sm text-gray-400"> your username for this website will be </label>
+        <input type="text" name="user" id="user" placeholder='get your username based on option select' readonly
+          class="placeholder:text-red-500 w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required><br>
         <script>
           function singleSelectChangeText() {
             //Getting Value
