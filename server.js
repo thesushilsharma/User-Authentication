@@ -30,8 +30,6 @@ app.use('/js', express.static(__dirname + 'public/js'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
 app.set("view engine", "ejs")
 // Route to Homepage
 app.get("/", (req, res) => res.render("index"))
