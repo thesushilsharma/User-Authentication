@@ -1,0 +1,654 @@
+<head>
+  <script>
+    var pages = document.getElementsByClassName('page');
+  for(var i = 0; i < pages.length; i++)
+    {
+      var page = pages[i];
+      if (i % 2 === 0)
+        {
+          page.style.zIndex = (pages.length - i);
+        }
+        
+    }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    for(var i = 0; i < pages.length; i++)
+      {
+        //Or var page = pages[i];
+        pages[i].pageNum = i + 1;
+        pages[i].onclick=function()
+          {
+            if (this.pageNum % 2 === 0)
+              {
+                this.classList.remove('flipped');
+                this.previousElementSibling.classList.remove('flipped');
+              }
+            else
+              {
+                this.classList.add('flipped');
+                this.nextElementSibling.classList.add('flipped');
+              }
+           }
+        }
+  })
+  </script>
+
+
+</head>
+<style>
+  .book {
+  transition: opacity 0.4s 0.2s;
+}
+p{
+  margin-top: 5%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  font-size: calc(var(--base-size) * 0.67);
+	 text-align: justify;
+  color: #000000;
+}
+h1{
+  margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 20%;
+	 margin-bottom: 20%;
+   text-align: center;
+}
+h2{
+  font-family: var(--book-title);
+	 font-size: calc(var(--base-size) * 3);
+	 font-weight: bold;
+	 text-transform: uppercase;
+	 letter-spacing: 3px;
+	 color: var(--dark-text);
+	 margin-top: calc(var(--baseline) * 5);
+	 margin-bottom: calc(var(--baseline) * 2);
+   margin-left: 10%;
+   margin-right: 10%;
+   text-align: center;
+}
+a{
+  margin-top: 0%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+}
+.page {
+  width: 40vw;
+  height: 60vw;
+  background-color: #111111;
+  float: left;
+  margin-bottom: 0.5em;
+  background: left top no-repeat;
+  background-size: cover;
+}
+.page:nth-child(even) {
+  clear: both;
+}
+.book {
+  perspective: 250vw;
+}
+.book .pages {
+  width: 80vw;
+  height: 60vw;
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border-radius: 4px;
+  /*box-shadow: 0 0 0 1px #e3dfd8;*/
+}
+.book .page {
+  float: none;
+  clear: none;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 40vw;
+  height: 60vw;
+  transform-origin: 0 0;
+  transition: transform 1.4s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f0f0f0;
+}
+.book .page:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.7s;
+  z-index: 2;
+}
+.book .page:nth-child(odd) {
+  pointer-events: all;
+  transform: rotateY(0deg);
+  right: 0;
+  border-radius: 0 4px 4px 0;
+  background-image: linear-gradient(to right, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 10%);
+}
+.book .page:nth-child(odd):hover {
+  transform: rotateY(-15deg);
+}
+.book .page:nth-child(odd):hover:before {
+  background: rgba(0, 0, 0, 0.03);
+}
+.book .page:nth-child(odd):before {
+  background: rgba(0, 0, 0, 0);
+}
+.book .page:nth-child(even) {
+  pointer-events: none;
+  transform: rotateY(180deg);
+  transform-origin: 100% 0;
+  left: 0;
+  border-radius: 4px 0 0 4px;
+  border-color: black;
+  background-image: linear-gradient(to left, rgba(0,0,0,.12) 0%, rgba(0,0,0,0) 10%);
+}
+.book .page:nth-child(even):before {
+  background: rgba(0, 0, 0, 0.2);
+}
+.book .page.grabbing {
+  transition: none;
+}
+.book .page.flipped:nth-child(odd) {
+  pointer-events: none;
+  transform: rotateY(-180deg);
+}
+.book .page.flipped:nth-child(odd):before {
+  background: rgba(0, 0, 0, 0.2);
+}
+.book .page.flipped:nth-child(even) {
+  pointer-events: all;
+  transform: rotateY(0deg);
+}
+.book .page.flipped:nth-child(even):hover {
+  transform: rotateY(15deg);
+}
+.book .page.flipped:nth-child(even):hover:before {
+  background: rgba(0, 0, 0, 0.03);
+}
+.book .page.flipped:nth-child(even):before {
+  background: rgba(0, 0, 0, 0);
+}
+*,
+* :before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: #333;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+  line-height: 1.5em;
+}
+.page:nth-child(odd){
+  background-position: right top;
+}
+
+.book__page .page__content-table {
+	 width: 100%;
+	 margin-top: calc(var(--baseline) * 2);
+}
+ .book__page .page__content-table td {
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 1);
+	 padding-bottom: calc(var(--baseline) * 1.5);
+	 text-transform: uppercase;
+}
+ .book__page .page__content-blockquote {
+	 margin-bottom: calc(var(--baseline) * 2);
+}
+ .book__page .page__content-blockquote-text {
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 0.67);
+	 /* font-style: italic; */
+	 text-align: justify;
+}
+ .book__page .page__content-blockquote-reference {
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 0.7);
+	 margin-top: calc(var(--baseline) * 0.3);
+	 float: right;
+	 text-transform: uppercase;
+}
+ .book__page .page__content-text {
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 0.67);
+	 text-align: justify;
+	 text-indent: var(--baseline);
+	
+}
+ .book__page .page__number {
+	 position: absolute;
+	 bottom: var(--baseline);
+	 width: calc(100% - (var(--baseline) * 2));
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 0.67);
+	 text-align: center;
+   position:absolute;
+  bottom:0;
+  right:0;
+}
+.book__page .page__content-book-title {
+	 font-family: var(--book-title);
+	 font-size: calc(var(--base-size) * 3);
+	 font-weight: bold;
+	 text-transform: uppercase;
+	 letter-spacing: 3px;
+	 color: var(--dark-text);
+	 margin-top: calc(var(--baseline) * 5);
+	 margin-bottom: calc(var(--baseline) * 2);
+}
+ .book__page .page__content-author {
+	 font-family: var(--title);
+	 font-size: calc(var(--base-size) * 1.2);
+	 font-weight: 100;
+	 text-transform: uppercase;
+	 color: var(--dark-text);
+	 border-top: 1px solid var(--dark-text);
+	 border-bottom: 1px solid var(--dark-text);
+	 display: inline-block;
+	 padding: calc(var(--baseline) / 2) calc(var(--baseline) / 5);
+	 margin-bottom: calc(var(--baseline) * 6);
+ }
+
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+<div class="book">
+  <div id="pages" class="pages">
+   <!-- <div class="page"><p></p></div>
+     <div class="page"></div>
+    <div class="page"><p>Hello there!</p></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div>
+    <div class="page"></div> -->
+
+
+<!--Keylooger
+<div class="page">
+  <p>
+    <h2>KeyLogger</h2>
+    <div class="page__content-text">
+      <p>
+        
+        
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">13</div>
+  </p>
+</div>-->
+
+
+<!--NETCAT-->
+<div class="page">
+  <p>
+    <h2>NETCAT</h2>
+    <div class="page__content-text">
+      <p>
+        Ncat is a feature-packed networking utility which reads and writes data across networks from the command line. 
+        Ncat was written for the Nmap Project as a much-improved reimplementation of the venerable Netcat. It uses both TCP and UDP for communication and is designed to be a reliable back-end tool to instantly provide network connectivity to other applications and users. 
+        Ncat will not only work with IPv4 and IPv6 but provides the user with a virtually limitless number of potential uses. 
+        Among Ncat’s vast number of features there is the ability to chain Ncats together, redirect both TCP and UDP ports to other sites, SSL support, and proxy connections via SOCKS4 or HTTP (CONNECT method) proxies (with optional proxy authentication as well). 
+        Some general principles apply to most applications and thus give you the capability of instantly adding networking support to software that would normally never support it.
+        <br>
+        Basic Usage: <br>
+        Ncat always operates in one of two basic modes: connect mode and listen mode. In connect mode, Ncat initiates a connection (or sends UDP data) to a service that is listening somewhere. For those familiar with socket programming, connect mode is like using the connect function. In listen mode, Ncat waits for an incoming connection (or data receipt), like using the bind and listen functions. You can think of connect mode as “client” mode and listen mode as “server” mode.
+        <br>To use Ncat in connect mode, run<br> ncat -host -port<br>Listen mode is the same, with the addition of the --listen option (or its -l alias):<br>
+        ncat --listen -host -port OR ncat -l -host -port 
+        
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">12</div>
+  </p>
+</div>
+
+
+<!-- Medusa-->
+<div class="page">
+  <p>
+    <h2>Medusa: Password cracking tool</h2>
+    <div class="page__content-text">
+      <p>
+        Medusa is a modular, speedy, and parallel, login brute-forcer. It is a very powerful and lightweight tool. 
+        Medusa tool is used to brute-force credentials in as many protocols as possible which eventually lead to remote code execution. 
+        It currently has over 21 modules, some of which are:  PcAnywhere, POP3, CVS, FTP, HTTP, IMAP,  SMB, SMTP (VRFY), SNMP, SSHv2, MS-SQL, MySQL, NCP (NetWare), PostgreSQL, rexec, rlogin, rsh, Telnet, SVN, VNC, VmAuthd and a generic wrapper module.
+        Kali Linux comes with pre-installed Medusa.
+        <br>
+        Brute Force Attack using Medusa :<br>
+        <ul>
+          <li>Run medusa in your system simply type medusa in the terminal.</li>
+          <li>If you need help regarding Medusa Tool. Simply, type medusa -h in the terminal.</li>
+          <li>To avoid ssh connection error first start the ssh services with the below command. sudo service ssh start</li>
+          <li>To crack the Password for ssh service, medusa -h 10.0.2.15 -u lalit -P /home/lalit/Desktop/Password_List.txt -M ssh -n 22</li>
+          <ul>
+            <li>medusa – to execute the medusa tool</li>
+            <li>-h – is used to specify the Target Host or IP address</li>
+            <li>-u – It means username to test</li>
+            <li>-P – we can use -p to test a single password or -P to use a text file containing a lot of Passwords for Brute Force Attack</li>
+            <li>-M – It means the name of the module to execute</li>
+            <li>-n – It means the port number</li>
+          </ul>
+        </ul>
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">11</div>
+  </p>
+</div>
+
+
+<!-- John the Ripper-->
+<div class="page">
+  <p>
+    <h2>JOHN THE RIPPER</h2>
+    <div class="page__content-text">
+      <p>
+        John the Ripper is an Open Source password security auditing and password recovery tool available 
+        for many operating systems. John the Ripper jumbo supports hundreds of hash and cipher types, including for:
+        user passwords of Unix flavors (Linux, *BSD, Solaris, AIX, QNX, etc.), macOS, Windows, 
+        "web apps" (e.g., WordPress), groupware (e.g., Notes/Domino), and database servers (SQL, LDAP, etc.);
+        network traffic captures (Windows network authentication, WiFi WPA-PSK, etc.);
+        encrypted private keys (SSH, GnuPG, cryptocurrency wallets, etc.), filesystems and disks (macOS .dmg files and "sparse bundles", Windows BitLocker, etc.),
+        archives (ZIP, RAR, 7z), and document files (PDF, Microsoft Office's, etc.)
+        <br>
+        There are several reasons why a penetration tester would be interested in
+        cracking passwords. First and foremost, this is a great technique for elevating and
+        escalating privileges. Consider the following example: assume that you were able
+        to compromise a target system but after logging in, you discover that you have
+        no rights on that system. No matter what you do, you are unable to read and
+        write in the target’s files and folders and even worse, you are unable to install any
+        new software. This is often the case when you get access to a low-privileged
+        account belonging to the “user” or “guest” group.
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">10</div>
+  </p>
+</div>
+
+<!-- Wireshark-->
+<div class="page">
+  <p>
+    <h2>Wireshark</h2>
+    <div class="page__content-text">
+      <p>
+        Wireshark is an open-source network protocol analysis software program, widely considered the industry standard. 
+        A global organization of network specialists and software developers supports Wireshark and continues to make updates for new network technologies and encryption methods.
+        Government agencies, corporations, non-profits, and educational institutions use Wireshark for troubleshooting and teaching purposes. 
+        There truly isn’t a better way to learn low-level networking than to look at traffic under the Wireshark microscope.
+        You should only use Wireshark on networks where you have permission to inspect network packets. Using Wireshark to look at packets without permission is illegal.
+        <br>
+        Capturing data packets on Wireshark<br>
+        You can select one or more of the network interfaces using shift+left-click. Once select the network interface, you can start the capture, and there are several ways to do that.
+        <ul>
+          <li>Click the first button on the toolbar, titled “Start capturing packets.”</li>
+          <li>You can select the menu item Capture -> Start.</li>
+          <li>During the capture, Wireshark will show you the packets captured in real-time.</li>
+          <li>Once you have captured all the packets needed, use the same buttons or menu options to stop the capture as you did to begin</li>
+        </ul><br>
+        Analyzing data packets on Wireshark<br>
+        Wireshark shows you three different panes for inspecting packet data. The Packet List, the top pane, lists all the packets in the capture. When you click on a packet, the other two panes change to show you the details about the selected packet. You can also tell if the packet is part of a conversation. Here are details about each column in the top pane:
+        <ul>
+          <li>No.: This is the number order of the packet captured. The bracket indicates that this packet is part of a conversation</li>
+          <li>Time: This column shows how long after you started the capture this particular packet was captured. You can change this value in the Settings menu to display a different option.</li>
+          <li>Source: This is the address of the system that sent the packet.</li>
+          <li>Destination: This is the address of the packet destination.</li>
+          <li>Protocol: This is the type of packet. For example: TCP, DNS, DHCPv6, or ARP.</li>
+          <li>Length: This column shows you the packet’s length, measured in bytes.</li>
+          <li>Info: This column shows you more information about the packet contents, which will vary depending on the type of packet.</li>
+        </ul>
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">9</div>
+  </p>
+</div>
+
+<!-- NMAP-->
+<div class="page">
+  <p>
+    <h2>NMAP</h2>
+    <div class="page__content-text">
+      <p>
+        Nmap was written by Gordon “Fyodor” Lyon and is
+        available for free from www.insecure.org. It is built into many of today’s Linux
+        distributions including Kali.
+        <br>
+        THE THREE-WAY HANDSHAKE<br>
+        When two machines on any given network want to communicate using TCP,
+        they do so by completing the three-way handshake. This process is very similar
+        60 The Basics of Hacking and Penetration Testing
+        to a phone conversation (at least before everyone had caller ID!). When you
+        want to talk to someone, you pick up the phone and dial the number, the
+        receiver picks up the ringing phone not knowing who the caller is and says
+        “Hello?”, the original caller then introduces himself by saying “Hi, this is Dave
+        Kennedy!” In response to this, the receiver will often acknowledge the caller by
+        saying “Oh, hi Dave!” At this point both people have enough information for
+        the conversation to continue as normal.
+        Computers work much the same way. When two computers want to talk, they go
+        through a similar process. The first computer connects to the second computer
+        by sending an SYN packet to a specified port number. If the second computer is
+        listening, it will respond with an SYN/ACK. When the first computer receives the
+        SYN/ACK, it replies with an ACK packet. At this point, the two machines can
+        communicate normally. In our phone example above, the original dialer is like
+        sending the SYN packet. The receiver picking up the phone and saying “Hello?”
+        is like the SYN/ACK packet and the original caller introducing himself is like the
+        ACK packet.
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">8</div>
+  </p>
+</div>
+
+<!-- Port Scanning-->
+<div class="page">
+  <p>
+    <h2>PORT SCANNING</h2>
+    <div class="page__content-text">
+      <p>
+        Port scanning is like knocking on the various doors and windows of
+        a house and seeing who answers. For example if we find that port 80 is open, we
+        can attempt a connection to the port and oftentimes get specific information
+        about the web server that is listening on that port.
+        <br>
+        There are a total of 65,536 (0e65,535) ports on every computer. Ports can be
+        either transmission control protocol (TCP) or user datagram protocol (UDP)
+        depending on the service utilizing the port or nature of the communication
+        occurring on the port. We scan computers to see what ports are in use or open.
+        This gives us a better picture of the purpose of the machine, which, in turn, gives
+        us a better idea about how to attack the box.
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">7</div>
+  </p>
+</div>
+<!-- PINGS AND PING SWEEPS-->
+<div class="page">
+  <p>
+    <h2>PINGS AND PING SWEEPS</h2>
+    <div class="page__content-text">
+      <p>
+        A ping is a special type of network packet called an Internet Control Message Protocol (ICMP) packet. 
+        Pings work by sending a particular type of network traffic, called an ICMP echo request packet, to a specific interface on a computer or network device. 
+        If the device (and the attached network card) that received the ping packet is turned on and not restricted from responding, the receiving machine
+        will respond back to the originating machine with an echo reply packet. Aside from telling us that a host is alive and accepting traffic, pings provide other
+        valuable information including the total time it took for the packet to travel to the target and return. Pings also report traffic loss that can be used to gauge the
+        reliability of a network connection.
+      </p>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">6</div>
+  </p>
+</div>
+
+<!-- THE HARVESTER: DISCOVERING AND LEVERAGING E-MAIL ADDRESSES -->
+  <div class="page">
+    <p>
+      <h2 >THE HARVESTER: DISCOVERING AND LEVERAGING E-MAIL ADDRESSES</h2>
+  <div class="page__content-text">
+    <p>
+An excellent tool to use in reconnaissance is the Harvester. The Harvester is a simple but highly effective Python script written by Christian Martorella. This tool allows us to quickly and accurately catalogue both e-mail addresses and subdomains that are directly related to our target.
+
+The Harvester can be used to search Google, Bing, and PGP servers for e-mails, hosts, and subdomains. It can also search LinkedIn for usernames. Most people assume their e-mail address is benign.
+
+The Harvester is built into Kali. The quickest way to access the Harvester is to open a terminal window and issue the command: theharvester. If you need the full path to the program and you are using Kali, the Harvester (and nearly all other tools) can be found in the /usr/bin/ directory.
+   </p>
+  </div>
+  <div class="page__number" style="position:absolute;bottom:10;right: 30px;">5</div>
+</p>
+</div>
+<!-- <div class="page"></div> -->
+  
+<!-- Getting started and cleaning up -->
+<div class="page">
+  <p>
+    <h2 >Getting started / setting up</h2>
+<div class="page__content-text">
+  <p>
+    Clean up<br>
+    The quest will not be completed and the quest timer will keep running unless u type the command
+    <p align="center">poweroff</p>
+    On the terminal, which basically shut down the machine.
+    Additionally, we do this to avoid accidently leaving a tool running or unintentionally transferring data from your network while you are absent from the device after the pen test.<br><br>
+    Setting up the NIC<br>
+    Every quest which requires you to be interacting with the terminal, we expect the first steps would be changing the IP address of your NIC or eth0.
+
+
+ </p>
+</div>
+<div class="page__number" style="position:absolute;bottom:10;right: 30px;">3</div>
+</p>
+</div>
+
+<!-- GOOGLE DIRECTIVES page -->
+  <div class="page">
+    <p>
+    <!-- <h1 class="page__content-title">I</h1> -->
+    <!-- <div class="page__content-blockquote">
+      <p class="page__content-blockquote-text">HARI SELDON — . . . born in the 11,988th year of the Galactic Era; died 12,069. The dates are more commonly given in terms of the current Foundational Era as -79 to the year 1 F.E. Born to middle-class parents on Helicon, Arcturus sector (where his father, in a legend of doubtful authenticity, was a tobacco grower in the hydroponic plants of the planet), he early showed amazing ability in mathematics. Anecdotes concerning his ability are innumerable, and some are contradictory. At the age of two, he is said to have. . . </p>
+      <p class="page__content-blockquote-text">. . . Undoubtedly his greatest contributions were in the field of psychohistory. Seldon found the field little more than a set of vague axioms; he left it a profound statistical science. . . . </p>
+      <p class="page__content-blockquote-text">. . . The best existing authority we have for the details of his life is the biography written by Gaal Dornick who, as a young man, met Seldon two years before the great mathematician's death. The story of the meeting . . .</p>
+      <span class="page__content-blockquote-reference">Encyclopedia Galactica*</span>
+    </div> -->
+
+
+    <h2 >GOOGLE DIRECTIVES: PRACTICING YOUR GOOGLE-FU</h2>
+    <div class="page__content-text">
+        
+      <p>Google provides “directives” that are easy to use and help us get
+      the most out of every search. These directives are keywords that enable us to
+      more accurately extract information from the Google Index.
+      To properly use a Google directive, you need three things:
+      <br> 1. The name of the directive you want to use
+      <br>2. A colon
+      <br>3. The term you want to use in the directive.
+      Oftentimes, Google Hacking can also be referred to as “Google Dorks”. When an
+        application has a specific vulnerability, hackers and security researchers will
+        typically place a Google Dork in the exploit, which allows you to search for
+        vulnerable versions utilizing Google. The exploit-db.com website which is run
+        by the folks who created BackTrack and Kali Linux (Offensive-Security) has an
+        extensive list of Google Dorks and additional Google Hacking Techniques.<br>
+        <a href="https://www.exploit-db.com/">See them all here...</a>
+      </p>
+      <a href="quest1_style.html"> Head Back</a>
+    </div>
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">4</div>
+  </p>
+  </div>
+  <!-- <div class="page"></div> -->
+  
+
+  <!-- cover page -->
+  <div class="page">
+    <h1 class="page__content-book-title">Tron - penetration testing</h1>
+          <h2 class="page__content-author">The Nerd Herd</h2>
+  </div>
+<!-- contents page -->
+     <div class="page"> 
+      <p>
+      <table class="page__content-table">
+        <tr>
+          <td align="left">Part I</td><td align="left">Getting started</td><td align="right">3</td>
+        </tr>
+      <tr>
+        <td align="left">Part II</td><td align="left">GOOGLE DIRECTIVES</td><td align="right">3</td>
+      </tr>
+      <tr>
+        <td align="left">Part III</td><td align="left">HTTrack</td><td align="right">43</td>
+      </tr>
+      <tr>
+        <td align="left">Part IV</td><td align="left">Harvester</td><td align="right">87</td>
+      </tr>
+      <tr>
+        <td align="left">Part V</td><td align="left">Ping Sweep</td><td align="right">147</td>
+      </tr>
+      <tr>
+        <td align="left">Part VI</td><td align="left">Port Scanning</td><td align="right">147</td>
+      </tr>
+      <tr>
+        <td align="left">Part VII</td><td align="left">PortScanning -Using NMAP</td><td align="right">173</td>
+      </tr>
+      <tr>
+        <td align="left">Part VIII</td><td align="left">Wireshark</td><td align="right">173</td>
+      </tr>
+      <tr>
+          <td align="left">Part IX</td><td align="left">Jack the Ripper</td><td align="right">183</td>
+        </tr>
+        <tr>
+          <td align="left">Part X</td><td align="left">Medusa</td><td align="right">183</td>
+        </tr>
+        <tr>
+          <td align="left">Part XI</td><td align="left">NetCAT</td><td align="right">183</td>
+        </tr>
+        <tr>
+          <td align="left">Part XII</td><td align="left">Keylogger</td><td align="right">183</td>
+        </tr>
+    </table>
+    
+    <div class="page__number" style="position:absolute;bottom:10;right: 30px;">2</div>
+  </p>
+  </div>
+  
+
+
+
+
+  </div>
+</div>
