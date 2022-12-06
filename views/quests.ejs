@@ -297,223 +297,223 @@
     // alert("start"+ task_num)
     localStorage.setItem('last_task_num', task_num);
     localStorage.setItem('last_scores', total_score);
-  
+
     function previous_task() {
-      ///task_num=document.getElementById("task_num").innerHTML;
-      ///document.getElementById("demo").innerHTML = "You clicked the button, I am new paragraph.";
-      if (task_num == 2) {
-        // document.getElementById('previous_task').style.visibility='hidden';
-        location.replace("/quest1_style.html")
-      }
-      task_num -= 1;
-      document.getElementById("task_num").innerHTML = task_num;
-  
-      total_score -= 10;
-      // num_tasks_done+=1;
-      document.getElementById("score_here").innerHTML = total_score;
-      localStorage.setItem('last_scores', total_score);
-      return task_num;
-    };
-  
-  
-  
-    function next_task() {
-      ///task_num=document.getElementById("task_num").innerHTML;
-      ///document.getElementById("demo").innerHTML = "You clicked the button, I am new paragraph.";
-      if (task_num == 8) {
-        document.getElementById('next_task').style.visibility = 'hidden';
-      }
-  
-  
-      task_num += 1;
-      if (document.getElementById("app").innerHTML == " ") {
-        total_score += 5;
-      }
-      else {
-        total_score += 10;
-      }
-      // num_tasks_done+=1;
-      document.getElementById("task_num").innerHTML = task_num;
-      localStorage.setItem('last_task_num', task_num);
-  
-  
-      document.getElementById("score_here").innerHTML = total_score;
-      localStorage.setItem('last_scores', total_score);
-      return task_num;
-    };
-  
-  
-    ///<!-- FIRST PAGE -->
-  
-    function get_score() {
-      return total_score;
-    }
-  
-  
-    function get_content(task_num) {
-      let content;
-      let solution;
-      let hint;
-      // var task_num=document.getElementById("task_num").innerHTML;
-      switch (task_num) {
-        case 2:
-          content = "Mirroring and downloading: This is a quick test for us to evaluate your pre-existing skills, one of them is using the tool httrack <br> In order to complete this task mirror and download your favorite site using the terminal provided on the side. ";
-          solution - " "; //can we validate using the terminal
-          hint = "httrack or any other website copier";
-          task_title = "Mirroring and downloading";
-          var up = document.getElementById('GFG_UP');
-          var down = document.getElementById('GFG_DOWN');
-  
-          up.innerHTML = "Click on the button to see"
-            + " if any file is selected";
-  
-          function GFG_Fun() {
-            if ($('#file')[0].files.length === 0) {
-              down.innerHTML = "No files selected";
-            } else {
-              down.innerHTML = "Some file is selected";
-            }
-          }
-          break;
-        case 3:
-          content = "Getting Emails <br>Use Harvester tool to find all the local emails from www.amazon.ae";
-          solution - "amazon-pr@amazon.com";
-          hint = "";
-          task_title = "Getting emails";
-          function validate_form_3() {
-            valid = false;
-  
-            if (document.contact_form.email.value == "amazon-pr@amazon.com") {
-              alert("Accepted");
-              valid = true;
-            }
-            else
-              alert("You havnt filled the correct info");
-  
-            return valid;
-          }
-          break;
-        //this is the begining of chapter 2 scanning
-        case 4: //
-          content = " Ping Sweep <br> Due to the current intrusion attack and since we as users have , we have received another system from the higher authorities as the current systems could be compromised <br> Task is to Scanning the IP address and check which one is still available <br> 190.2.131.205 <br>19.2.11.5<br>";
-          solution - " ";
-          hint = "Use the command ping";
-          task_title = "Ping Sweep";
-          function validate_form_4() {
-            valid = false;
-  
-            if (document.contact_form.ipadd.value == "190.2.131.205") {
-              alert("Accepted");
-              valid = true;
-            }
-            else
-              alert("You havnt filled the correct info");
-  
-            return valid;
-          }
-          break;
-        case 5: //nmap question for port scanning
-          content = "Port Scanning <br> Once we have found the IP address that's still open, we do port scanning to get more info about seeing which port is open.";
-          solution - "sun";
-          hint = "sun";
-          task_title = "Port Scanning ";
-          function validate_form_5() {
-            valid = false;
-  
-            if (document.contact_form.ipadd.value == "190.2.131.205")//this answer isnt right
-            {
-              alert("Accepted");
-              valid = true;
-            }
-            else
-              alert("You havnt filled the correct info");
-  
-            return valid;
-          }
-          break;
-        case 6: //wireshark
-          content = "Wireshark: <br> We have uploaded a .pcap file open it in on the wireshark and see if you find anything interesting, we are expecting a hashed string Goodluck!";
-          solution - "sun";
-          hint = "sun";
-          task_title = "Port Scanning ";
-          var up = document.getElementById('GFG_UP');
-          var down = document.getElementById('GFG_DOWN');
-  
-          up.innerHTML = "Click on the button to see"
-            + " if any file is selected";
-  
-          function GFG_Fun() {
-            if ($('#file')[0].files.length === 0) {
-              down.innerHTML = "No files selected";
-            } else {
-              down.innerHTML = "Some file is selected";
-            }
-          }
-  
-          break;
-  
-        case 7: //quick move to john the reaper
-          content = "Hash file decrypting <br> After we found the target systems Hash File, we are going decrypt the password file to get the plaintext file <br> 2b11185c557143e2755576ed1aee9a0afe04c8ec4d42b<br>50763f7ba2c761f90a838cf1328a3529f08b84d80453<br>215b154e81b571677afe18e82a9afe39b8246a0";
-          solution - "secretpassword";
-          hint = "Ask John";
-          task_title = "Password Scanning";
-          function validate_form_7() {
-            valid = false;
-  
-            if (document.contact_form.username.value == "secretpassword") {
-              alert("Accepted");
-              valid = true;
-            }
-            else
-              alert("You havnt filled the correct info");
-  
-            return valid;
-          }
-          break;
-        case 8: //Login page:
-          content = "Military login page<br> Lets try login from this sus field";
-          solution - "some number";//a Military Tag ID
-          hint = "";
-          function validate_form_8() {
-            valid = false;
-  
-            if (document.contact_form.name.value == "AJAX HARTMEN") {
-              alert("Accepted");
-              valid = true;
-            }
-            else
-              alert("You havnt filled the correct info");
-  
-            return valid;
-          }
-          break;
-      }
-      document.getElementById("demo").innerHTML = content;
-      document.getElementById("task_title").innerHTML = task_title;
-      document.getElementById("task_num").innerHTML = task_num;
-      document.getElementById("score_here").innerHTML = total_score;
-      // document.getElementById("speech").innerHTML.value =  "content";
-      textField = document.getElementById("speech");
-      textField.value = content;
-    };
-  
-    function startTimer() {
-      timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
-        document.getElementById("base-timer-label").innerHTML = formatTime(
-          timeLeft
-        );
-        setCircleDasharray();
-        setRemainingPathColor(timeLeft);
-  
-        if (timeLeft === 0) {
-          onTimesUp();
-  
+        ///task_num=document.getElementById("task_num").innerHTML;
+        ///document.getElementById("demo").innerHTML = "You clicked the button, I am new paragraph.";
+        if (task_num == 2) {
+            // document.getElementById('previous_task').style.visibility='hidden';
+            location.replace("/quest1_style.html")
         }
-      }, 1000);
+        task_num -= 1;
+        document.getElementById("task_num").innerHTML = task_num;
+
+        total_score -= 10;
+        // num_tasks_done+=1;
+        document.getElementById("score_here").innerHTML = total_score;
+        localStorage.setItem('last_scores', total_score);
+        return task_num;
     };
-  </script>
+
+
+
+    function next_task() {
+        ///task_num=document.getElementById("task_num").innerHTML;
+        ///document.getElementById("demo").innerHTML = "You clicked the button, I am new paragraph.";
+        if (task_num == 8) {
+            document.getElementById('next_task').style.visibility = 'hidden';
+        }
+
+
+        task_num += 1;
+        if (document.getElementById("app").innerHTML == " ") {
+            total_score += 5;
+        }
+        else {
+            total_score += 10;
+        }
+        // num_tasks_done+=1;
+        document.getElementById("task_num").innerHTML = task_num;
+        localStorage.setItem('last_task_num', task_num);
+
+
+        document.getElementById("score_here").innerHTML = total_score;
+        localStorage.setItem('last_scores', total_score);
+        return task_num;
+    };
+
+
+    ///<!-- FIRST PAGE -->
+
+    function get_score() {
+        return total_score;
+    }
+
+
+    function get_content(task_num) {
+        let content;
+        let solution;
+        let hint;
+        // var task_num=document.getElementById("task_num").innerHTML;
+        switch (task_num) {
+            case 2:
+                content = "Mirroring and downloading: This is a quick test for us to evaluate your pre-existing skills, one of them is using the tool httrack <br> In order to complete this task mirror and download your favorite site using the terminal provided on the side. ";
+                solution - " "; //can we validate using the terminal
+                hint = "httrack or any other website copier";
+                task_title = "Mirroring and downloading";
+                var up = document.getElementById('GFG_UP');
+                var down = document.getElementById('GFG_DOWN');
+
+                up.innerHTML = "Click on the button to see"
+                    + " if any file is selected";
+
+                function GFG_Fun() {
+                    if ($('#file')[0].files.length === 0) {
+                        down.innerHTML = "No files selected";
+                    } else {
+                        down.innerHTML = "Some file is selected";
+                    }
+                }
+                break;
+            case 3:
+                content = "Getting Emails <br>Use Harvester tool to find all the local emails from www.amazon.ae";
+                solution - "amazon-pr@amazon.com";
+                hint = "";
+                task_title = "Getting emails";
+                function validate_form_3() {
+                    valid = false;
+
+                    if (document.contact_form.email.value == "amazon-pr@amazon.com") {
+                        alert("Accepted");
+                        valid = true;
+                    }
+                    else
+                        alert("You havnt filled the correct info");
+
+                    return valid;
+                }
+                break;
+            //this is the begining of chapter 2 scanning
+            case 4: //
+                content = " Ping Sweep <br> Due to the current intrusion attack and since we as users have , we have received another system from the higher authorities as the current systems could be compromised <br> Task is to Scanning the IP address and check which one is still available <br> 190.2.131.205 <br>19.2.11.5<br>";
+                solution - " ";
+                hint = "Use the command ping";
+                task_title = "Ping Sweep";
+                function validate_form_4() {
+                    valid = false;
+
+                    if (document.contact_form.ipadd.value == "190.2.131.205") {
+                        alert("Accepted");
+                        valid = true;
+                    }
+                    else
+                        alert("You havnt filled the correct info");
+
+                    return valid;
+                }
+                break;
+            case 5: //nmap question for port scanning
+                content = "Port Scanning <br> Once we have found the IP address that's still open, we do port scanning to get more info about seeing which port is open.";
+                solution - "sun";
+                hint = "sun";
+                task_title = "Port Scanning ";
+                function validate_form_5() {
+                    valid = false;
+
+                    if (document.contact_form.ipadd.value == "190.2.131.205")//this answer isnt right
+                    {
+                        alert("Accepted");
+                        valid = true;
+                    }
+                    else
+                        alert("You havnt filled the correct info");
+
+                    return valid;
+                }
+                break;
+            case 6: //wireshark
+                content = "Wireshark: <br> We have uploaded a .pcap file open it in on the wireshark and see if you find anything interesting, we are expecting a hashed string Goodluck!";
+                solution - "sun";
+                hint = "sun";
+                task_title = "Port Scanning ";
+                var up = document.getElementById('GFG_UP');
+                var down = document.getElementById('GFG_DOWN');
+
+                up.innerHTML = "Click on the button to see"
+                    + " if any file is selected";
+
+                function GFG_Fun() {
+                    if ($('#file')[0].files.length === 0) {
+                        down.innerHTML = "No files selected";
+                    } else {
+                        down.innerHTML = "Some file is selected";
+                    }
+                }
+
+                break;
+
+            case 7: //quick move to john the reaper
+                content = "Hash file decrypting <br> After we found the target systems Hash File, we are going decrypt the password file to get the plaintext file <br> 2b11185c557143e2755576ed1aee9a0afe04c8ec4d42b<br>50763f7ba2c761f90a838cf1328a3529f08b84d80453<br>215b154e81b571677afe18e82a9afe39b8246a0";
+                solution - "secretpassword";
+                hint = "Ask John";
+                task_title = "Password Scanning";
+                function validate_form_7() {
+                    valid = false;
+
+                    if (document.contact_form.username.value == "secretpassword") {
+                        alert("Accepted");
+                        valid = true;
+                    }
+                    else
+                        alert("You havnt filled the correct info");
+
+                    return valid;
+                }
+                break;
+            case 8: //Login page:
+                content = "Military login page<br> Lets try login from this sus field";
+                solution - "some number";//a Military Tag ID
+                hint = "";
+                function validate_form_8() {
+                    valid = false;
+
+                    if (document.contact_form.name.value == "AJAX HARTMEN") {
+                        alert("Accepted");
+                        valid = true;
+                    }
+                    else
+                        alert("You havnt filled the correct info");
+
+                    return valid;
+                }
+                break;
+        }
+        document.getElementById("demo").innerHTML = content;
+        document.getElementById("task_title").innerHTML = task_title;
+        document.getElementById("task_num").innerHTML = task_num;
+        document.getElementById("score_here").innerHTML = total_score;
+        // document.getElementById("speech").innerHTML.value =  "content";
+        textField = document.getElementById("speech");
+        textField.value = content;
+    };
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            document.getElementById("base-timer-label").innerHTML = formatTime(
+                timeLeft
+            );
+            setCircleDasharray();
+            setRemainingPathColor(timeLeft);
+
+            if (timeLeft === 0) {
+                onTimesUp();
+
+            }
+        }, 1000);
+    };
+</script>
 
 <body class="noisy" onload="startTimer();get_content(task_num,total_score);"></body>
 <div class="emblem"><span class="icon-information"></span></div>
@@ -547,7 +547,7 @@
                                 </path>
                             </svg>
                             <span class="navigation-links4-outline">
-                                <span>Outline</span>
+                                <span><a type="button" href="/book.html"><b>Outline</b></a></span>
                             </span>
                             <svg viewBox="0 0 841.1428571428571 1024" class="navigation-links4-icon2">
                                 <path
