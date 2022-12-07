@@ -34,6 +34,7 @@ app.use('/Chapter1', express.static(__dirname + 'public/Chapter1'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs")
 // Route to Homepage
 app.get("/", (req, res) => res.render("index"))
