@@ -1,7 +1,7 @@
-let yourGlobalVariable = "global value"; //global variable           
-function displayGlobalVal() {
-  alert(yourGlobalVariable); //global variable , result  is "global value"
-};
+// let yourGlobalVariable = "global value"; //global variable           
+// function displayGlobalVal() {
+//   alert(yourGlobalVariable); //global variable , result  is "global value"
+// };
 
 
 ///////////////////////////////////////////////////TIMER FUNCTIONS/////////////////////////////////////////////
