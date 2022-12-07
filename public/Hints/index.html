@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+        <style>
+            body {
+            margin: 20px auto;
+            font-family: 'Lato';
+            background:rgb(30, 29, 31);
+            color:#fff;
+            }
+
+            *{
+            margin:0;
+            padding:0;
+            }
+
+            h2 {
+            font-weight: bold;
+            font-size: 2rem;
+            }
+            p {
+            font-family: 'Reenie Beanie';
+            font-size: 2rem;
+            }
+            ul,li{
+            list-style:none;
+            }
+            ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+            ul li a{
+            text-decoration:none;
+            color:#000;
+            background:#ffc;
+            display:block;
+            height:10em;
+            width:10em;
+            padding:1em;
+            box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+            transform: rotate(-6deg);
+            transition: transform .15s linear;
+            }
+
+            ul li:nth-child(even) a{
+            transform:rotate(4deg);
+            position:relative;
+            top:5px;
+            background:#cfc;
+            }
+            ul li:nth-child(3n) a{
+            transform:rotate(-3deg);
+            position:relative;
+            top:-5px;
+            background:#ccf;
+            }
+            ul li:nth-child(5n) a{
+            transform:rotate(5deg);
+            position:relative;
+            top:-10px;
+            }
+
+            ul li a:hover,ul li a:focus{
+            box-shadow:10px 10px 7px rgba(0,0,0,.7);
+            transform: scale(1.25);
+            position:relative;
+            z-index:5;
+            }
+
+            ul li{
+            margin:1em;
+            }
+        </style>
+    </head>        
+    <body>
+        <ul>
+        <li>
+            <a href="/Hints/assets/T1.html" contenteditable="false">
+            <h2>Task 1</h2>
+            <p>Google directory</p>
+            </a>    
+        </li>
+        <li>
+            <a href="/Hints/assets/T2.html" contenteditable="false">
+            <h2>Task 2</h2>
+            <p>Mirroring and downloading</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Hints/assets/T3.html" contenteditable="false">
+            <h2>Task 3</h2>
+            <p>Getting emails</p>
+            </a>
+        </li>
+        <li>
+            <a href="/as contenteditable="false">
+            <h2>Task 4</h2>
+            <p>Ping Sweep</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Hints/assets/T5.html" contenteditable="false">
+            <h2>Task 5</h2>
+            <p>Port Scanning</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Hints/assets/T6.html" contenteditable="false">
+            <h2>Task 6</h2>
+            <p>Wireshark</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Hints/assets/T7.html" contenteditable="false">
+            <h2>Task 7</h2>
+            <p>Jack the Ripper</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Hints/assets/T8.html" contenteditable="false">
+            <h2>Task 8</h2>
+            <p>Military Login Page</p>
+            </a>
+        </li>
+        </ul>
+    </body>
+</html>
