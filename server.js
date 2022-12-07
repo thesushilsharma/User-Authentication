@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express()
+const app = express();
 const bcrypt = require("bcrypt")
 const path = require('path');
 const session = require('express-session');
