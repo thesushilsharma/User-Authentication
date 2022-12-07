@@ -42,7 +42,6 @@
 
     function validate_form() {
         valid = false;
-        //document.getElementById('demo').innerHTML = 'You clicked the button, I am new paragraph.';
 
         if (document.form1.email.value == "#2AW87676CV7348127")
         // "#2AW87676CV7348127"
@@ -58,7 +57,6 @@
 
     function redo_form() {
         valid = false;
-        // document.getElementById('demo').innerHTML = 'You clicked the redo button, I am new paragraph.';
         document.getElementById('email_found').innerHTML.value = " ";
         document.form1.email.value = "";
     }
@@ -293,15 +291,6 @@
 <style>
     .quest11-container {
         width: 100%;
-        /* display: flex; */
-        /* overflow: auto; */
-        /* min-height: 100vh; */
-        /* align-items: flex-start; */
-        /* flex-direction: column; */
-        /* justify-content: flex-start; */
-        /* margin-top: -10000px; */
-        /* position:relative;  */
-        /* top:-1000px;  */
     }
 
     .quest11-form {
@@ -687,9 +676,9 @@
                                 </path>
                             </svg>
                             <span class="navigation-links4-outline"><span><a type="button"
-                                href="/book.html"><b>Outline</b></a></span></span><br>
-                                <span class="navigation-links4-outline"><span><a type="button"
-                                    href="Hints/index.html"><b>Hints</b></a></span></span>
+                                        href="/book.html"><b>Outline</b></a></span></span><br>
+                            <span class="navigation-links4-outline"><span><a type="button"
+                                        href="Hints/index.html"><b>Hints</b></a></span></span>
                             <svg viewBox="0 0 841.1428571428571 1024" class="navigation-links4-icon2">
                                 <path
                                     d="M841.143 548.571c0 19.429-7.429 38.286-21.143 52l-372 372c-13.714 13.143-32.571 21.143-52 21.143s-37.714-8-51.429-21.143l-42.857-42.857c-13.714-13.714-21.714-32.571-21.714-52s8-38.286 21.714-52l167.429-167.429h-402.286c-41.143 0-66.857-34.286-66.857-73.143v-73.143c0-38.857 25.714-73.143 66.857-73.143h402.286l-167.429-168c-13.714-13.143-21.714-32-21.714-51.429s8-38.286 21.714-51.429l42.857-42.857c13.714-13.714 32-21.714 51.429-21.714s38.286 8 52 21.714l372 372c13.714 13.143 21.143 32 21.143 51.429z">
@@ -894,15 +883,6 @@
 
                     .btn.red {
                         background: #540679;
-                        /* left: 197px;
-  bottom: 20px;
-  position: absolute;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  margin-right: 10px;
-  width: 100px;
-  height: 50px; */
 
                     }
 
@@ -932,20 +912,8 @@
 
                     @media (min-width: 48em) {
                         .btn {
-                            /* padding: 18px 30px; */
-                            /* font-size: 12px; */
                             font-size: 0.75rem;
                             font-weight: bold;
-                            /* left: 197px; */
-                            /* bottom: 20px;
-  position: absolute;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  margin-right: 10px;
-  width: 100px;
-  height: 50px; */
-
                         }
 
                         .btn:after {
@@ -1094,15 +1062,12 @@
                                 <option value="" style="font-size: 25px;"></option>
                             </select>
                         </div>
-                        <!-- <button style=" border: none; width: 0; height: 0; font-size: 20px;"><a class="btn red" href="#">Say it!</a></button>  -->
-                        <!-- <a class="btn red" href="#">Say it!</a> -->
                     </div>
 
                 </form>
             </main>
 
-            <script>// text to speech
-                //   https://www.twilio.com/blog/speech-to-text-browser-web-speech-api#:~:text=On%20any%20web%20page%2C%20open,.%22%20in%20its%20default%20voice.
+            <script>
                 window.addEventListener('DOMContentLoaded', () => {
                     const form = document.getElementById('voice-form');
                     const input = document.getElementById('speech');
@@ -1202,19 +1167,6 @@
         position: fixed;
 
     }
-
-    /* .video-game-button:active, .start-btn:active {
-	box-shadow: none;
-	position: fixed;
-
-}
-
-#display-image{
-  vertical-align:middle;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-} */
 </style>
 
 <script>
