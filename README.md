@@ -1,4 +1,4 @@
-# User-Authentication
+# Virtual-Learning-Environment
 A virtual learning environment that offers a variety of flexible online tools to support distant learning and a playground to practice cyber skills.
 
 ## Prerequisites
