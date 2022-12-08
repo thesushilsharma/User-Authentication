@@ -53,7 +53,13 @@ app.get("/dashboard", (req, res) => {
 
 app.get("/thankyou-page", (req, res) => res.render("thankyou-page"))
 app.get("/quest", (req, res) => res.render("quest"))
-app.get("/quests", (req, res) => res.render("quests"))
+app.get("/quest2", (req, res) => res.render("quest2"))
+app.get("/quest3", (req, res) => res.render("quest3"))
+app.get("/quest4", (req, res) => res.render("quest4"))
+app.get("/quest5", (req, res) => res.render("quest5"))
+app.get("/quest6", (req, res) => res.render("quest6"))
+app.get("/quest7", (req, res) => res.render("quest7"))
+app.get("/quest8", (req, res) => res.render("quest8"))
 
 app.get("/logout", (req, res) => res.redirect("/"))
 //app.get("/admin", adminAuth, (req, res) => res.render("admin"))
