@@ -384,11 +384,9 @@
             /// <!-- SECOND PAGE -->
             const greetingValue = localStorage.getItem('last_task_num');
             const last_score = localStorage.getItem('last_scores');
-            // alert("last "+greetingValue);
             document.getElementById("here").innerHTML = greetingValue;
             document.getElementById("scorehere").innerHTML = last_score;
-            //location.replace("file:///C:/Users/garim/OneDrive/Desktop/tron_website/quests_style.html")
-            //get_content(greetingValue);
+           
             return greetingValue;
         }
 
@@ -433,18 +431,6 @@
             reader.readAsDataURL(this.files[0]);
         });
     </script>
-
-
-
-
-    <!-- <button onclick="get_last_task();" >
-          resume
-      </button> -->
-
-
-    <!-- partial:index.partial.html -->
-
-    <!-- partial -->
     <script>
         function handleImageUpload() {
 
@@ -458,10 +444,6 @@
 
         }
     </script>
-
-
-
-
 
     <div class="screen">
         <img src="img/coins.gif"
@@ -537,25 +519,20 @@
             </ul>
         </nav>
 
-        <!-- <span class='video-game-button' onclick="openForm()" ><img src="chatbot.gif" style="height: 50px;width: 50px;"></img></span>  -->
         <script>
             function openAvatar() {
                 var myWindow = window.open("index.html", "", "width=500,height=1000");
             }
         </script>
 
-
-
         <div style="
-          /* margin-top: 5%; */
-          /* margin-bottom: 5%; */
           margin-right:30px;  
           border-radius: 25px;
           border: 2px solid indigo;
           padding: 20px; 
           width: 100%;
-          height: 50px;  
-        "> <span class="neonText">DASHBOARD</span>
+          height: 50px;">
+            <span class="neonText">DASHBOARD</span>
             <div style="margin-right: 0px; margin-left: auto; float: right;">
                 <input id="upload" type="file" onChange="handleImageUpload()"
                     style="margin-right: -50px; margin-left: auto; ">
@@ -563,9 +540,6 @@
             </div>
         </div>
 
-
-        <!-- <span class='video-game-button'>A</span>
-      <span class='video-game-button'>B</span>   -->
         <p style="text-align:right ;font-family:'Fira Mono', monospace; font-size:20px;">
             <%= locals.user ? user : "User" %> is logged in!
         </p>
@@ -587,34 +561,14 @@
             <tr>
                 <td>
                     <span class='start-btn' onclick="start_from_beining();"
-                        style="width:20% ; height:100% ; align-items: center;">START</span>
+                        style="width:30% ; height:100% ; align-items: center;">START</span>
                 </td>
                 <td>
                     <span class='start-btn' onclick="get_current_task();"
-                        style="width:20% ; height:100% ; align-items: center;">RESUME</span>
+                        style="width:30% ; height:100% ; align-items: center;">RESUME</span>
                 </td>
             </tr>
         </table>
-
-
-        </head>
-
-
-
-        <!-- <div class="chat-popup" id="myForm">
-        <iframe src='chatbot.html' width='600' height='350'> </iframe>
-        
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      </div> -->
-        <!-- <p>Proper way to chat with this chatbot:</p>
-        <ul style="list-style-type:disc">
-          <li>1. Only ask General information about cybersecurity </li>
-          <li>2. Long messages of our chatbot has no audio responses but still provide messages. This is a limitation of the software. </li>
-         -->
-
-
-
-        <!-- <p style="font-family:'Fira Mono', monospace; font-size:20px;">It was this howling and firing of the guns at Ripley and St. George's Hill that we had heard at Upper Halliford. The Ripley gunners, unseasoned artillery volunteers who ought never to have been placed in such a position, fired one wild, premature, ineffectual volley, and bolted on horse and foot through the deserted village, while the Martian, without using his Heat-Ray, walked serenely over their guns, stepped gingerly among them, passed in front of them, and so came unexpectedly upon the guns in Painshill Park, which he destroyed.</p> -->
 
     </div>
 
@@ -648,19 +602,6 @@
             position: fixed;
 
         }
-
-        /* .video-game-button:active, .start-btn:active {
-        box-shadow: none;
-        position: fixed;
-      
-      }
-      
-      #display-image{
-        vertical-align:middle;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-      } */
     </style>
     <style>
         #display-image {
@@ -682,8 +623,6 @@
             document.getElementById("myForm").style.display = "none";
         }
     </script>
-
-
 
 </body>
 

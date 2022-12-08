@@ -323,59 +323,6 @@
         }
 
 
-        function get_content(task_num) {
-            let content;
-            let solution;
-            let hint;
-
-            switch (task_num) {
-                case 2:
-                    content = "Mirroring and downloading: This is a quick test for us to evaluate your pre-existing skills, one of them is using the tool httrack <br> In order to complete this task mirror and download your favorite site using the terminal provided on the side. ";
-                    solution - " "; //can we validate using the terminal
-                    hint = "httrack or any other website copier";
-                    task_title = "Mirroring and downloading";
-                    break;
-                case 3:
-                    content = "Getting Emails <br>Use Harvester tool to find all the local emails from www.amazon.ae";
-                    solution - "amazon-pr@amazon.com";
-                    hint = "";
-                    task_title = "Getting emails";
-                    break;
-                //this is the begining of chapter 2 scanning
-                case 4: //
-                    content = " Ping Sweep <br> Due to the current intrusion attack and since we as users have , we have received another system from the higher authorities as the current systems could be compromised <br> Task is to Scanning the IP address and check which one is still available <br> 190.2.131.205 <br>19.2.11.5<br>";
-                    solution - " ";
-                    hint = "Use the command ping";
-                    task_title = "Ping Sweep";
-                    break;
-                case 5: //nmap question for port scanning
-                    content = "Port Scanning <br> Once we have found the IP address that's still open, we do port scanning to get more info about seeing which port is open.";
-                    solution - "sun";
-                    hint = "sun";
-                    task_title = "Port Scanning ";
-                    break;
-                case 6: //quick move to john the reaper
-                    content = "Hash file decrypting <br> After we found the target systems Hash File, we are going decrypt the password file to get the plaintext file <br> 2b11185c557143e2755576ed1aee9a0afe04c8ec4d42b<br>50763f7ba2c761f90a838cf1328a3529f08b84d80453<br>215b154e81b571677afe18e82a9afe39b8246a0";
-                    solution - "secretpassword";
-                    hint = "Ask John";
-                    task_title = "Password Scanning";
-                    break;
-                case 7: //Medusa:
-                    content = "MEDUSA <br> Asking John has helped us find the username of the specific account, now we have 1) IPaddress  2)Username now lets try and login to this account, the only thing we dont have is a password <br> for this purpose we have this task which will show you how to conduct the following: <br> We have uploaded a password list file";
-                    solution - "some number";//a Military Tag ID
-                    hint = "";
-                    break;
-                case 8: //time to mess with the hacker
-                    content = "Password resetting <br> "
-            }
-            document.getElementById("demo").innerHTML = content;
-            document.getElementById("task_title").innerHTML = task_title;
-            document.getElementById("task_num").innerHTML = task_num;
-            document.getElementById("score_here").innerHTML = total_score;
-            // document.getElementById("speech").innerHTML.value =  "content";
-            textField = document.getElementById("speech");
-            textField.value = content;
-        };
 
         function startTimer() {
             timerInterval = setInterval(() => {
