@@ -2,68 +2,43 @@
 <html>
 
 <head lang="en">
-    <title>Quest 1</title>
+    <title>Quest 6</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="quest.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/quest.css">
-
 </head>
 
-<body class="noisy" onload="starTimer()">
+<body class="noisy" onload="startTimer();get_content(task_num,total_score);">
     <!-- next task ; validation ; redo-->
     <script>
-        var task_num = 1;
+        var task_num = 6;
         function next_task1() {//best
-            if (task_num === 1) {
-                var valid = validate_form();
-                if (valid === true) {
-                    let task_num = parseInt(localStorage.getItem('current_task_num'));
-                    localStorage.setItem('current_task_num', task_num + 1);
 
-                    let score = parseInt(localStorage.getItem('current_scores'));
-                    let inc = 0;
-                    if (document.getElementById("app").innerHTML == " ") {
-                        inc = 5;
-                    }
-                    else {
-                        inc = 10;
-                    }
-                    localStorage.setItem('current_scores', score + inc);
-                    document.getElementById("score_here").innerHTML = score + inc;
-                    localStorage.setItem('last_task_num', task_num);
-                    localStorage.setItem('last_scores', 0);
-                    // alert(score)
-                    // alert(task_num)
-                    location.replace("/quest2")
+            let task_num = parseInt(localStorage.getItem('current_task_num'));
+            localStorage.setItem('current_task_num', task_num + 1);
 
-                }
+            let score = parseInt(localStorage.getItem('current_scores'));
+            let inc = 0;
+            if (document.getElementById("app").innerHTML == " ") {
+                inc = 5;
             }
+            else {
+                inc = 10;
+            }
+            localStorage.setItem('current_scores', score + inc);
+            document.getElementById("score_here").innerHTML = score + inc;
+            localStorage.setItem('last_task_num', task_num);
+            localStorage.setItem('last_scores', 0);
+            // alert(score)
+            // alert(task_num)
+            location.replace("/quest7")
+
         };
 
-        function validate_form() {
-            valid = false;
-
-            if (document.form1.email.value == "#2AW87676CV7348127")
-            // "#2AW87676CV7348127"
-            {
-                valid = true;
-                alert('Accepted');
-            }
-            else
-                alert('You havnt filled the correct info');
-
-            return valid;
-        }
-
-        function redo_form() {
-            valid = false;
-            document.getElementById('email_found').innerHTML.value = " ";
-            document.form1.email.value = "";
-        }
     </script>
 
     <div class="emblem"><span class="icon-information"></span></div>
@@ -106,22 +81,20 @@
                 </div>
             </div>
 
-            <script type="text/javascript"></script>
             <div class="quest11-container">
                 <div class="quest11-form">
                     <form id="form1" name="form1">
-                        <h1 class="quest11-text">Your findings:</h1>
-
                         <div id="app"></div>
                         <script src="js/script.js"></script>
                         <br>
                         <span class="quest11-email">
-                            <span>Confirmation Number</span>
+                            <span>Your findings:</span>
                             <br />
                         </span>
-                        <input type="text" placeholder="enter the confirmation Number that you found" id="email_found"
-                            name="email" class="quest11-entered-email input" />
+                        <input type="text" placeholder="enter the email address that you found" id="email_found"
+                            class="quest11-entered-email input" />
                     </form>
+
 
                     <button id="redo" onclick="redo_form()" class="btn red"> Redo </button>
                     <button id=btn class="btn red" onclick="next_task1()"> Submit </button>
@@ -140,18 +113,15 @@
                     <form class="input" id="voice-form">
                         <div class="quest11-container1">
                             <div class="field">
-                                <h1 class="quest11-text08">Task 1: search engines</h1>
+                                <h1 class="quest11-text08">Task 6: Password Scanning</h1>
                                 <span class="quest11-text09">
 
                                     <span>
-                                        We received an anonymous tip, and as recruits this task requires
+                                        Hash file decrypting <br> After we found the target systems Hash File, we are
+                                        going decrypt the password file to get the plaintext file <br>
+                                        2b11185c557143e2755576ed1aee9a0afe04c8ec4d42b<br>50763f7ba2c761f90a838cf1328a3529f08b84d80453<br>215b154e81b571677afe18e82a9afe39b8246a0
                                     </span>
-                                    <span>you guys could dig into it and follow up with the same. </span>
-                                    <br />
-                                    <br />
-                                    <span>Site: boliviatravelsite.com</span>
-                                    <br />
-                                    <span>Objective: to find the confirmation number of “Mitch Lippmann“</span> <br>
+                                    <span>Objective: Ask John</span> <br>
                                     <a href="Hints/index.html">click here for more information</a>
                                 </span>
                                 <input type="hidden" name="speech" id="speech"
@@ -245,8 +215,6 @@
     <div class="piece scanlines noclick"></div>
     <div class="piece glow noclick"></div>
     </div>
-
-
 
     <script>
         function openForm() {

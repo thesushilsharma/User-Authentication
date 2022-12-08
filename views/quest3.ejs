@@ -2,25 +2,22 @@
 <html>
 
 <head lang="en">
-    <title>Quest 1</title>
+    <title>Quest 3</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="quest.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/quest.css">
-
 </head>
 
-<body class="noisy" onload="starTimer()">
+<body class="noisy" onload="startTimer();get_content(task_num,total_score);">
     <!-- next task ; validation ; redo-->
     <script>
-        var task_num = 1;
+        var task_num = 3;
         function next_task1() {//best
-            if (task_num === 1) {
-                var valid = validate_form();
-                if (valid === true) {
+            
                     let task_num = parseInt(localStorage.getItem('current_task_num'));
                     localStorage.setItem('current_task_num', task_num + 1);
 
@@ -38,32 +35,12 @@
                     localStorage.setItem('last_scores', 0);
                     // alert(score)
                     // alert(task_num)
-                    location.replace("/quest2")
+                    location.replace("/quest4")
 
-                }
-            }
+                
+            
         };
 
-        function validate_form() {
-            valid = false;
-
-            if (document.form1.email.value == "#2AW87676CV7348127")
-            // "#2AW87676CV7348127"
-            {
-                valid = true;
-                alert('Accepted');
-            }
-            else
-                alert('You havnt filled the correct info');
-
-            return valid;
-        }
-
-        function redo_form() {
-            valid = false;
-            document.getElementById('email_found').innerHTML.value = " ";
-            document.form1.email.value = "";
-        }
     </script>
 
     <div class="emblem"><span class="icon-information"></span></div>
@@ -106,23 +83,325 @@
                 </div>
             </div>
 
-            <script type="text/javascript"></script>
             <div class="quest11-container">
                 <div class="quest11-form">
                     <form id="form1" name="form1">
-                        <h1 class="quest11-text">Your findings:</h1>
 
+                        <head>
+                            <meta charset="UTF-8">
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+                            <link rel="stylesheet" href="css/style.css">
+                        </head>
                         <div id="app"></div>
                         <script src="js/script.js"></script>
                         <br>
                         <span class="quest11-email">
-                            <span>Confirmation Number</span>
+                            <span>Your findings:</span>
                             <br />
-                        </span>
-                        <input type="text" placeholder="enter the confirmation Number that you found" id="email_found"
-                            name="email" class="quest11-entered-email input" />
+                          </span>
+                          <input type="text" placeholder="enter the email address that you found" id="email_found"
+                            class="quest11-entered-email input" />
                     </form>
 
+                    <!-- for redo & submit buttons -->
+                    <style>
+                        a {
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .sr {
+                            width: 0;
+                            height: 0;
+                            text-indent: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+
+                        .btn {
+                            position: relative;
+                            display: inline-block;
+                            margin: 5px 10px;
+                            padding: 17px 22px;
+                            width: 120px;
+                            z-index: 1;
+                            border: 0;
+                            outline: 0;
+                            cursor: pointer;
+                            font-size: 1px;
+                            /* font-size: 0.6875rem; */
+                            color: #fff;
+                            text-align: center;
+                            line-height: normal;
+                            letter-spacing: 0.05em;
+                            text-transform: uppercase;
+                            font-weight: bold;
+
+                        }
+
+                        .btn .hover {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            z-index: -1;
+                            overflow: hidden;
+                        }
+
+                        .btn .hover span {
+                            position: relative;
+                            display: block;
+                            left: -15px;
+                            height: 10px;
+                            width: 0;
+                            content: '';
+                        }
+
+                        .btn .hover span:after {
+                            position: absolute;
+                            display: block;
+                            right: -10px;
+                            width: 10px;
+                            height: 10px;
+                            background: #fff;
+                            content: '';
+                        }
+
+                        .btn .hover span:nth-child(odd):after {
+                            background: rgba(0, 0, 0, 0.35);
+                        }
+
+                        .btn .hover span:first-child {
+                            left: -75px;
+                            transition: all 0.3s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(2) {
+                            left: -45px;
+                            transition: all 0.325s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(3) {
+                            left: -55px;
+                            transition: all 0.35s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(4) {
+                            transition: all 0.4s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(5) {
+                            left: -25px;
+                            transition: all 0.375s steps(8);
+                        }
+
+                        .btn:after {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            height: 4px;
+                            z-index: -2;
+                            content: '';
+                        }
+
+                        .btn:hover {
+                            color: #fff;
+                        }
+
+                        .btn:hover,
+                        .btn:focus {
+                            color: #fff;
+                        }
+
+                        .btn:hover .hover span:first-child,
+                        .btn:focus .hover span:first-child {
+                            width: calc(100% + 76px);
+                        }
+
+                        .btn:hover .hover span:first-child:after,
+                        .btn:focus .hover span:first-child:after {
+                            animation: whiteBlack 0.3s 0s 1;
+                        }
+
+                        .btn:hover .hover span:nth-child(2),
+                        .btn:focus .hover span:nth-child(2) {
+                            width: calc(100% + 46px);
+                            transition: all 0.375s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(2):after,
+                        .btn:focus .hover span:nth-child(2):after {
+                            animation: whiteBlack 0.3s 0.06s 1 reverse backwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(3),
+                        .btn:focus .hover span:nth-child(3) {
+                            width: calc(100% + 56px);
+                            transition: all 0.35s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(3):after,
+                        .btn:focus .hover span:nth-child(3):after {
+                            animation: whiteBlack 0.3s 0.05s 1 forwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(4),
+                        .btn:focus .hover span:nth-child(4) {
+                            width: calc(100% + 16px);
+                            transition: all 0.3s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(4):after,
+                        .btn:focus .hover span:nth-child(4):after {
+                            animation: whiteBlack 0.3s 0s 1 reverse backwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(5),
+                        .btn:focus .hover span:nth-child(5) {
+                            width: calc(100% + 26px);
+                            transition: all 0.325s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(5):after,
+                        .btn:focus .hover span:nth-child(5):after {
+                            animation: whiteBlack 0.3s 0.07s 1 forwards;
+                        }
+
+                        .btn.red {
+                            background: #540679;
+
+                        }
+
+                        .btn.red span,
+                        .btn.red:after {
+                            background: #9f4ece;
+
+                        }
+
+                        .btn.green {
+                            background: #2bdc33;
+                        }
+
+                        .btn.green span,
+                        .btn.green:after {
+                            background: #23b32a;
+                        }
+
+                        .btn.blue {
+                            background: #16bfff;
+                        }
+
+                        .btn.blue span,
+                        .btn.blue:after {
+                            background: #129acd;
+                        }
+
+                        @media (min-width: 48em) {
+                            .btn {
+                                font-size: 0.75rem;
+                                font-weight: bold;
+                            }
+
+                            .btn:after {
+                                height: 6px;
+                            }
+                        }
+
+                        @-webkit-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @-moz-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @-ms-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+                    </style>
                     <button id="redo" onclick="redo_form()" class="btn red"> Redo </button>
                     <button id=btn class="btn red" onclick="next_task1()"> Submit </button>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
@@ -140,40 +419,35 @@
                     <form class="input" id="voice-form">
                         <div class="quest11-container1">
                             <div class="field">
-                                <h1 class="quest11-text08">Task 1: search engines</h1>
+                                <h1 class="quest11-text08">Task 3: Getting emails</h1>
                                 <span class="quest11-text09">
-
+          
                                     <span>
-                                        We received an anonymous tip, and as recruits this task requires
+                                        Getting Emails <br>Use Harvester tool to find all the local emails from www.amazon.ae 
                                     </span>
-                                    <span>you guys could dig into it and follow up with the same. </span>
-                                    <br />
-                                    <br />
-                                    <span>Site: boliviatravelsite.com</span>
-                                    <br />
-                                    <span>Objective: to find the confirmation number of “Mitch Lippmann“</span> <br>
+                                    <span>Objective: ******@amazon.com</span> <br>
                                     <a href="Hints/index.html">click here for more information</a>
                                 </span>
                                 <input type="hidden" name="speech" id="speech"
                                     value="We received an anonymous tip, and as recruits this task requires you guys could dig into it and follow up with the same. Site: boliviatravelsite.com Objective: to find the confirmation number of “Mitch Lippmann“"
                                     required readonly />
-
+          
                             </div>
-
+          
                             <!-- for read aloud              -->
                             <div class="field">
                                 <br>
                                 <button
                                     style=" border: none; border-radius: 50%;padding: 10px; width:65px;font-size: 20px;">
                                     <img src="img/voice_icon.png" width="50" height="38" /></button>
-
+          
                                 <label for="voices">Choose a voice:</label><br>
                                 <select name="voices" id="voices" style="width: 200px; font-size: 25px;">
                                     <option value="" style="font-size: 25px;"></option>
                                 </select>
                             </div>
                         </div>
-
+          
                     </form>
                 </main>
 
@@ -246,8 +520,6 @@
     <div class="piece glow noclick"></div>
     </div>
 
-
-
     <script>
         function openForm() {
             var myWindow = window.open("chatbot.html", "", "width=500,height=1000");
@@ -258,7 +530,6 @@
     </script>
     <span class='video-game-button' onclick="openForm()"><img src="img/chatbot.gif"
             style="height: 50px;width: 50px;"></img></span>
-
 
 
 </body>

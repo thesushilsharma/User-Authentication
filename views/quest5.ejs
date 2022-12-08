@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Quest 5</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="quest.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="noisy" onload="startTimer();get_content(task_num,total_score);">
+    <!-- next task ; validation ; redo-->
+    <script>
+        var task_num = 5;
+        function next_task1() {//best
+            
+                    let task_num = parseInt(localStorage.getItem('current_task_num'));
+                    localStorage.setItem('current_task_num', task_num + 1);
+
+                    let score = parseInt(localStorage.getItem('current_scores'));
+                    let inc = 0;
+                    if (document.getElementById("app").innerHTML == " ") {
+                        inc = 5;
+                    }
+                    else {
+                        inc = 10;
+                    }
+                    localStorage.setItem('current_scores', score + inc);
+                    document.getElementById("score_here").innerHTML = score + inc;
+                    localStorage.setItem('last_task_num', task_num);
+                    localStorage.setItem('last_scores', 0);
+                    // alert(score)
+                    // alert(task_num)
+                    location.replace("/quest6")
+
+        };
+
+    </script>
+
+    <div class="emblem"><span class="icon-information"></span></div>
+    <div class="frame">
+        <div class="piece output">
+            <div>
+                <div class="nav-container">
+                    <header data-role="Accordion" class="nav-header">
+                        <img alt="logo" src="img/tron_logo.png" class="nav-image" />
+                        <div class="nav-separator"></div>
+                        <div data-role="AccordionHeader" class="nav-accordion-header">
+                            <svg viewBox="0 0 1024 1024" class="nav-icon">
+                                <path
+                                    d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z">
+                                </path>
+                            </svg>
+                        </div>
+                        <nav class="nav-nav">
+                            <nav class="navigation-links4-nav navigation-links4-root-class-name19">
+                                <span class="navigation-links4-home"><span><a type="button"
+                                            href="/dashboard">Home</a></span></span>
+                                <span class="navigation-links4-back"><span>back</span></span>
+                                <svg viewBox="0 0 914.2857142857142 1024" class="navigation-links4-icon">
+                                    <path
+                                        d="M877.714 512v73.143c0 38.857-25.714 73.143-66.857 73.143h-402.286l167.429 168c13.714 13.143 21.714 32 21.714 51.429s-8 38.286-21.714 51.429l-42.857 43.429c-13.143 13.143-32 21.143-51.429 21.143s-38.286-8-52-21.143l-372-372.571c-13.143-13.143-21.143-32-21.143-51.429s8-38.286 21.143-52l372-371.429c13.714-13.714 32.571-21.714 52-21.714s37.714 8 51.429 21.714l42.857 42.286c13.714 13.714 21.714 32.571 21.714 52s-8 38.286-21.714 52l-167.429 167.429h402.286c41.143 0 66.857 34.286 66.857 73.143z">
+                                    </path>
+                                </svg>
+                                <span class="navigation-links4-outline"><span><a type="button"
+                                            href="/book.html"><b>Outline</b></a></span></span><br><span></span>
+                                <svg viewBox="0 0 841.1428571428571 1024" class="navigation-links4-icon2">
+                                    <path
+                                        d="M841.143 548.571c0 19.429-7.429 38.286-21.143 52l-372 372c-13.714 13.143-32.571 21.143-52 21.143s-37.714-8-51.429-21.143l-42.857-42.857c-13.714-13.714-21.714-32.571-21.714-52s8-38.286 21.714-52l167.429-167.429h-402.286c-41.143 0-66.857-34.286-66.857-73.143v-73.143c0-38.857 25.714-73.143 66.857-73.143h402.286l-167.429-168c-13.714-13.143-21.714-32-21.714-51.429s8-38.286 21.714-51.429l42.857-42.857c13.714-13.714 32-21.714 51.429-21.714s38.286 8 52 21.714l372 372c13.714 13.143 21.143 32 21.143 51.429z">
+                                    </path>
+                                </svg>
+                                <span class="navigation-links4-next"><span onclick="next_task1();">next</span></span>
+                                <span class="navigation-links4-score" id="score_here"><span>0</span></span>
+                            </nav>
+                        </nav>
+                    </header>
+                </div>
+            </div>
+
+            <div class="quest11-container">
+                <div class="quest11-form">
+                    <form id="form1" name="form1">
+
+                        <head>
+                            <meta charset="UTF-8">
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+                            <link rel="stylesheet" href="css/style.css">
+                        </head>
+                        <div id="app"></div>
+                        <script src="js/script.js"></script>
+                        <br>
+                        <span class="quest11-email">
+                            <span>Your findings:</span>
+                            <br />
+                          </span>
+                          <input type="text" placeholder="enter the email address that you found" id="email_found"
+                            class="quest11-entered-email input" />
+                    </form>
+
+                    <!-- for redo & submit buttons -->
+                    <style>
+                        a {
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .sr {
+                            width: 0;
+                            height: 0;
+                            text-indent: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+
+                        .btn {
+                            position: relative;
+                            display: inline-block;
+                            margin: 5px 10px;
+                            padding: 17px 22px;
+                            width: 120px;
+                            z-index: 1;
+                            border: 0;
+                            outline: 0;
+                            cursor: pointer;
+                            font-size: 1px;
+                            /* font-size: 0.6875rem; */
+                            color: #fff;
+                            text-align: center;
+                            line-height: normal;
+                            letter-spacing: 0.05em;
+                            text-transform: uppercase;
+                            font-weight: bold;
+
+                        }
+
+                        .btn .hover {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            z-index: -1;
+                            overflow: hidden;
+                        }
+
+                        .btn .hover span {
+                            position: relative;
+                            display: block;
+                            left: -15px;
+                            height: 10px;
+                            width: 0;
+                            content: '';
+                        }
+
+                        .btn .hover span:after {
+                            position: absolute;
+                            display: block;
+                            right: -10px;
+                            width: 10px;
+                            height: 10px;
+                            background: #fff;
+                            content: '';
+                        }
+
+                        .btn .hover span:nth-child(odd):after {
+                            background: rgba(0, 0, 0, 0.35);
+                        }
+
+                        .btn .hover span:first-child {
+                            left: -75px;
+                            transition: all 0.3s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(2) {
+                            left: -45px;
+                            transition: all 0.325s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(3) {
+                            left: -55px;
+                            transition: all 0.35s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(4) {
+                            transition: all 0.4s steps(8);
+                        }
+
+                        .btn .hover span:nth-child(5) {
+                            left: -25px;
+                            transition: all 0.375s steps(8);
+                        }
+
+                        .btn:after {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            height: 4px;
+                            z-index: -2;
+                            content: '';
+                        }
+
+                        .btn:hover {
+                            color: #fff;
+                        }
+
+                        .btn:hover,
+                        .btn:focus {
+                            color: #fff;
+                        }
+
+                        .btn:hover .hover span:first-child,
+                        .btn:focus .hover span:first-child {
+                            width: calc(100% + 76px);
+                        }
+
+                        .btn:hover .hover span:first-child:after,
+                        .btn:focus .hover span:first-child:after {
+                            animation: whiteBlack 0.3s 0s 1;
+                        }
+
+                        .btn:hover .hover span:nth-child(2),
+                        .btn:focus .hover span:nth-child(2) {
+                            width: calc(100% + 46px);
+                            transition: all 0.375s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(2):after,
+                        .btn:focus .hover span:nth-child(2):after {
+                            animation: whiteBlack 0.3s 0.06s 1 reverse backwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(3),
+                        .btn:focus .hover span:nth-child(3) {
+                            width: calc(100% + 56px);
+                            transition: all 0.35s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(3):after,
+                        .btn:focus .hover span:nth-child(3):after {
+                            animation: whiteBlack 0.3s 0.05s 1 forwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(4),
+                        .btn:focus .hover span:nth-child(4) {
+                            width: calc(100% + 16px);
+                            transition: all 0.3s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(4):after,
+                        .btn:focus .hover span:nth-child(4):after {
+                            animation: whiteBlack 0.3s 0s 1 reverse backwards;
+                        }
+
+                        .btn:hover .hover span:nth-child(5),
+                        .btn:focus .hover span:nth-child(5) {
+                            width: calc(100% + 26px);
+                            transition: all 0.325s steps(8);
+                        }
+
+                        .btn:hover .hover span:nth-child(5):after,
+                        .btn:focus .hover span:nth-child(5):after {
+                            animation: whiteBlack 0.3s 0.07s 1 forwards;
+                        }
+
+                        .btn.red {
+                            background: #540679;
+
+                        }
+
+                        .btn.red span,
+                        .btn.red:after {
+                            background: #9f4ece;
+
+                        }
+
+                        .btn.green {
+                            background: #2bdc33;
+                        }
+
+                        .btn.green span,
+                        .btn.green:after {
+                            background: #23b32a;
+                        }
+
+                        .btn.blue {
+                            background: #16bfff;
+                        }
+
+                        .btn.blue span,
+                        .btn.blue:after {
+                            background: #129acd;
+                        }
+
+                        @media (min-width: 48em) {
+                            .btn {
+                                font-size: 0.75rem;
+                                font-weight: bold;
+                            }
+
+                            .btn:after {
+                                height: 6px;
+                            }
+                        }
+
+                        @-webkit-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @-moz-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @-ms-keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+
+                        @keyframes whiteBlack {
+
+                            0%,
+                            24% {
+                                background: #fff;
+                            }
+
+                            25%,
+                            49% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+
+                            50%,
+                            74% {
+                                background: #fff;
+                            }
+
+                            75%,
+                            100% {
+                                background: rgba(0, 0, 0, 0.35);
+                            }
+                        }
+                    </style>
+                    <button id="redo" onclick="redo_form()" class="btn red"> Redo </button>
+                    <button id=btn class="btn red" onclick="next_task1()"> Submit </button>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+                        type="text/javascript"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                    <script src="/js/buttons.js"></script>
+                    <script> // add extra elements to buttons for hover, keeps html cleaner
+                        $('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
+                        $('.social-btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span></div>');
+                    </script>
+                </div>
+
+
+                <main>
+                    <form class="input" id="voice-form">
+                        <div class="quest11-container1">
+                            <div class="field">
+                                <h1 class="quest11-text08">Task 5: Port Scanning</h1>
+                                <span class="quest11-text09">
+          
+                                    <span>
+                                        Port Scanning <br> Once we have found the IP address that's still open, we do port scanning to get more info about seeing which port is open.
+                                    </span>
+                                    <span>Objective: sun</span> <br>
+                                    <a href="Hints/index.html">click here for more information</a>
+                                </span>
+                                <input type="hidden" name="speech" id="speech"
+                                    value="We received an anonymous tip, and as recruits this task requires you guys could dig into it and follow up with the same. Site: boliviatravelsite.com Objective: to find the confirmation number of “Mitch Lippmann“"
+                                    required readonly />
+          
+                            </div>
+          
+                            <!-- for read aloud              -->
+                            <div class="field">
+                                <br>
+                                <button
+                                    style=" border: none; border-radius: 50%;padding: 10px; width:65px;font-size: 20px;">
+                                    <img src="img/voice_icon.png" width="50" height="38" /></button>
+          
+                                <label for="voices">Choose a voice:</label><br>
+                                <select name="voices" id="voices" style="width: 200px; font-size: 25px;">
+                                    <option value="" style="font-size: 25px;"></option>
+                                </select>
+                            </div>
+                        </div>
+          
+                    </form>
+                </main>
+
+                <script>
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const form = document.getElementById('voice-form');
+                        const input = document.getElementById('speech');
+                        const voiceSelect = document.getElementById('voices');
+                        let voices;
+                        let currentVoice;
+                        const main = document.getElementsByTagName('main')[0];
+
+                        const populateVoices = () => {
+                            const availableVoices = speechSynthesis.getVoices();
+                            voiceSelect.innerHTML = '';
+
+                            availableVoices.forEach(voice => {
+                                const option = document.createElement('option');
+                                let optionText = `${voice.name} (${voice.lang})`;
+                                if (voice.default) {
+                                    optionText += ' [default]';
+                                    if (typeof currentVoice === 'undefined') {
+                                        currentVoice = voice;
+                                        option.selected = true;
+                                    }
+                                }
+                                if (currentVoice === voice) {
+                                    option.selected = true;
+                                }
+                                option.textContent = optionText;
+                                voiceSelect.appendChild(option);
+                            });
+                            voices = availableVoices;
+                        };
+
+                        populateVoices();
+                        speechSynthesis.onvoiceschanged = populateVoices;
+
+                        voiceSelect.addEventListener('change', event => {
+                            const selectedIndex = event.target.selectedIndex;
+                            currentVoice = voices[selectedIndex];
+                        });
+
+                        form.addEventListener('submit', event => {
+                            event.preventDefault();
+                            const toSay = input.value.trim();
+                            const utterance = new SpeechSynthesisUtterance(toSay);
+                            utterance.voice = currentVoice;
+                            utterance.addEventListener('start', () => {
+                                main.classList.add('speaking');
+                            });
+                            utterance.addEventListener('end', () => {
+                                main.addEventListener(
+                                    'animationiteration',
+                                    () => main.classList.remove('speaking'),
+                                    { once: true }
+                                );
+                            });
+                            speechSynthesis.speak(utterance);
+                            input.value = '';
+                        });
+
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="piece scanlines noclick"></div>
+    <div class="piece glow noclick"></div>
+    </div>
+
+    <!-- for chatbot -->
+    <style>
+        .video-game-button {
+            text-shadow: 1px 1px pink, -1px -1px grey;
+            line-height: 1.5em;
+            text-align: center;
+            display: inline-block;
+            width: 60px;
+            -webkit-border-radius: .75em;
+            -moz-border-radius: .75em;
+            -o-border-radius: .75em;
+            border-radius: .75em;
+            background-color: silver;
+            -webkit-box-shadow: 0 .2em grey;
+            -moz-box-shadow: 0 .2em grey;
+            -o-box-shadow: 0 .2em grey;
+            box-shadow: 0 .2em grey;
+            color: silver;
+            margin: 5px;
+            background-color: silver;
+            background-image: -o-linear-gradient(left top, pink 3%, silver 22%, grey 99%);
+            background-image: -moz-linear-gradient(left top, pink 3%, silver 22%, grey 99%);
+            background-image: -webkit-linear-gradient(left top, pink 3%, silver 22%, grey 99%);
+            background-image: linear-gradient(left top, pink 3%, silver 22%, grey 99%);
+            cursor: pointer;
+            padding-left: 5px;
+            bottom: 45px;
+            right: 55px;
+            position: fixed;
+
+        }
+    </style>
+
+    <script>
+        function openForm() {
+            var myWindow = window.open("chatbot.html", "", "width=500,height=1000");
+        }
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+    <span class='video-game-button' onclick="openForm()"><img src="img/chatbot.gif"
+            style="height: 50px;width: 50px;"></img></span>
+
+
+
+</body>
+
+</html>
