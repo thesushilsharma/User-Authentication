@@ -29,6 +29,8 @@ app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/img', express.static(__dirname + 'public/img'));
 app.use('/Hints', express.static(__dirname + 'public/Hints'));
 app.use('/Chapter1', express.static(__dirname + 'public/Chapter1'));
+app.use('/Chapter2', express.static(__dirname + 'public/Chapter2'));
+app.use('/Chapter2ends', express.static(__dirname + 'public/Chapter2ends'));
 
 
 app.use(express.json());
