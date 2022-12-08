@@ -32,6 +32,8 @@ app.use('/Chapter1', express.static(__dirname + 'public/Chapter1'));
 app.use('/Chapter2', express.static(__dirname + 'public/Chapter2'));
 app.use('/Chapter2ends', express.static(__dirname + 'public/Chapter2ends'));
 app.use('/Chapter3', express.static(__dirname + 'public/Chapter3'));
+app.use('/Chapter3ends', express.static(__dirname + 'public/Chapter3ends'));
+app.use('/Chapter4', express.static(__dirname + 'public/Chapter4'));
 
 
 app.use(express.json());
