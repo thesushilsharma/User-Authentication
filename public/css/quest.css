@@ -322,12 +322,13 @@ a:hover {
 .quest11-container1 {
   top: 206px;
   left: 68px;
-  width: 600px;
+  width: 563px;
   display: flex;
+  padding: 30px;
   position: absolute;
   /* padding-top: 50px; */
   padding-left: 50px;
-  padding-right: 5px;
+  padding-right: 50px;
   flex-direction: column;
   padding-bottom: 50px;
 }
