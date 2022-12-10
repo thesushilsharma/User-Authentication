@@ -19,8 +19,7 @@ app.use(express.json())
 app.use(session({
     secret: '321af37d-79b1-4f3e-bcf6-012bf57e33bb',
     resave: true,
-    saveUninitialized: true,
-    store: sessionStore
+    saveUninitialized: true
 }));
 
 // Static Files
@@ -73,7 +72,6 @@ app.get('/logout', (req, res)=>{
         if(err){
             return res.redirect('/')
         }
-        sessionStore.close()
         res.redirect('/login')
     })
 })

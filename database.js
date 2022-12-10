@@ -1,6 +1,5 @@
 const mysql = require("mysql2");
 const session = require('express-session');
-const mysqlStore = require('express-mysql-session')(session);
 require("dotenv").config();
 
 const {
@@ -24,16 +23,14 @@ const options = {
 
 const pool = mysql.createPool(options);
 
-const sessionStore = new mysqlStore(options, pool);
-
 pool.getConnection((err, connection) => {
     if (err) throw (err)
-    console.log("Connection has been established successfully: " + connection.threadId);
+    console.log("Database connected successfully: " + connection.threadId);
     var sql = "CREATE TABLE IF NOT EXISTS `project` (`Serial` INT NOT NULL AUTO_INCREMENT, `user` VARCHAR(15) NOT NULL, `password` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `name` VARCHAR(255) NOT NULL , INDEX `Serial`(`Serial`), PRIMARY KEY (`user`), UNIQUE `email` (`email`));";
     pool.query(sql, function (err, result) {
-        if (err) throw err;
+        if (err) throw (err);
         console.log("Table created");
     });
 });
 
-module.exports = { pool, session, sessionStore };
+module.exports = { pool, session };
