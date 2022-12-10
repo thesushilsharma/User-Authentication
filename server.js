@@ -2,12 +2,9 @@ const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt")
 const path = require('path');
-const session = require('express-session');
-//const MySQLStore = require('express-mysql-session')(session);
-const mysql = require('mysql2');
 require("dotenv").config();
 
-var db = require('./database');
+var  { pool , session, sessionStore } = require('./database.js');
 //require('./terminal.js');
 
 //CREATE TABLE `test`.`project` (`user` INT(7) NOT NULL AUTO_INCREMENT , `password` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `name` VARCHAR(255) NOT NULL , PRIMARY KEY (`user`), UNIQUE `email` (`email`)) ENGINE = InnoDB;
@@ -22,8 +19,8 @@ app.use(express.json())
 app.use(session({
     secret: '321af37d-79b1-4f3e-bcf6-012bf57e33bb',
     resave: true,
-    saveUninitialized: true
-   //store: sessionStore, 
+    saveUninitialized: true,
+    store: sessionStore
 }));
 
 // Static Files
@@ -38,7 +35,6 @@ app.use('/Chapter2ends', express.static(__dirname + 'public/Chapter2ends'));
 app.use('/Chapter3', express.static(__dirname + 'public/Chapter3'));
 app.use('/Chapter3ends', express.static(__dirname + 'public/Chapter3ends'));
 app.use('/Chapter4', express.static(__dirname + 'public/Chapter4'));
-//app.use(express.static(path.join(__dirname, 'client')));
 
 
 app.use(express.json());
@@ -71,7 +67,16 @@ app.get("/quest6", (req, res) => res.render("quest6"))
 app.get("/quest7", (req, res) => res.render("quest7"))
 app.get("/quest8", (req, res) => res.render("quest8"))
 
-app.get("/logout", (req, res) => res.redirect("/"))
+//app.get("/logout", (req, res) => res.redirect("/"))
+app.get('/logout', (req, res)=>{
+    req.session.destroy(err => {
+        if(err){
+            return res.redirect('/')
+        }
+        sessionStore.close()
+        res.redirect('/login')
+    })
+})
 //app.get("/admin", adminAuth, (req, res) => res.render("admin"))
 //app.get("/basic", userAuth, (req, res) => res.render("user"))
 
@@ -82,7 +87,7 @@ app.post("/createUser", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const name = req.body.name;
     const email = req.body.email;
-    db.getConnection(async (err, connection) => {
+    pool.getConnection(async (err, connection) => {
         if (err) throw (err)
         await connection.execute("SELECT * FROM project WHERE user = ?", [user], async (err, result) => {
             if (err) throw (err)
@@ -104,7 +109,7 @@ app.post("/createUser", async (req, res) => {
                 })
             }
         }) //end of connection.execute()
-    }) //end of db.getConnection()
+    }) //end of pool.getConnection()
 }) //end of app.post()
 
 
@@ -112,7 +117,7 @@ app.post("/createUser", async (req, res) => {
 app.post("/login", (req, res) => {
     const user = req.body.user
     const password = req.body.password
-    db.getConnection(async (err, connection) => {
+    pool.getConnection(async (err, connection) => {
         if (err) throw (err)
         await connection.execute("Select * from project where user = ?", [user], async (err, result) => {
             connection.release()
@@ -138,5 +143,5 @@ app.post("/login", (req, res) => {
                 } //end of bcrypt.compare()
             }//end of User exists i.e. results.length==0
         }) //end of connection.execute()
-    }) //end of db.connection()
+    }) //end of pool.connection()
 }) //end of app.post()

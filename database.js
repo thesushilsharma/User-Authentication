@@ -1,4 +1,6 @@
 const mysql = require("mysql2");
+const session = require('express-session');
+const mysqlStore = require('express-mysql-session')(session);
 require("dotenv").config();
 
 const {
@@ -9,7 +11,7 @@ const {
     DB_PORT
 } = require("./config");
 
-const pool = mysql.createPool({
+const options = {
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
@@ -18,7 +20,11 @@ const pool = mysql.createPool({
     password: DB_PASSWORD,
     database: DB_DATABASE,
     port: DB_PORT
-})
+}
+
+const pool = mysql.createPool(options);
+
+const sessionStore = new mysqlStore(options, pool);
 
 pool.getConnection((err, connection) => {
     if (err) throw (err)
@@ -30,4 +36,4 @@ pool.getConnection((err, connection) => {
     });
 });
 
-module.exports = pool;
+module.exports = { pool, session, sessionStore };
