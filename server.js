@@ -3,12 +3,12 @@ const app = express();
 const bcrypt = require("bcrypt")
 const path = require('path');
 const session = require('express-session');
-//const MySQLStore = require('express-mysql-session')(session);
+const MySQLStore = require('express-mysql-session')(session);
 const mysql = require('mysql2');
 require("dotenv").config();
 
 var db = require('./database');
-require('./terminal.js');
+//require('./terminal.js');
 
 //CREATE TABLE `test`.`project` (`user` INT(7) NOT NULL AUTO_INCREMENT , `password` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `name` VARCHAR(255) NOT NULL , PRIMARY KEY (`user`), UNIQUE `email` (`email`)) ENGINE = InnoDB;
 const port = process.env.PORT;
@@ -18,12 +18,12 @@ app.listen(port,
 app.use(express.json())
 //middleware to read req.body.<params>
 
-//const sessionStore = new MySQLStore(db);
+const sessionStore = new MySQLStore(db);
 app.use(session({
     secret: '321af37d-79b1-4f3e-bcf6-012bf57e33bb',
     resave: true,
     saveUninitialized: true,
-    //store: sessionStore, 
+    store: sessionStore, 
 }));
 
 // Static Files
