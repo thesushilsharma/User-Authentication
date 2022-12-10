@@ -3,7 +3,7 @@ const app = express();
 const bcrypt = require("bcrypt")
 const path = require('path');
 const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
+//const MySQLStore = require('express-mysql-session')(session);
 const mysql = require('mysql2');
 require("dotenv").config();
 
@@ -18,12 +18,12 @@ app.listen(port,
 app.use(express.json())
 //middleware to read req.body.<params>
 
-const sessionStore = new MySQLStore(db);
+//const sessionStore = new MySQLStore(db);
 app.use(session({
     secret: '321af37d-79b1-4f3e-bcf6-012bf57e33bb',
     resave: true,
     saveUninitialized: true,
-    store: sessionStore, 
+    //store: sessionStore, 
 }));
 
 // Static Files
@@ -38,6 +38,7 @@ app.use('/Chapter2ends', express.static(__dirname + 'public/Chapter2ends'));
 app.use('/Chapter3', express.static(__dirname + 'public/Chapter3'));
 app.use('/Chapter3ends', express.static(__dirname + 'public/Chapter3ends'));
 app.use('/Chapter4', express.static(__dirname + 'public/Chapter4'));
+app.use(express.static(path.join(__dirname, 'client')));
 
 
 app.use(express.json());
