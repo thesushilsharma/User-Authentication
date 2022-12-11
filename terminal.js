@@ -31,9 +31,9 @@ io.on("connection", (socket) => {
     });
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "../client"))
-})
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client"))
+// })
 
 const port = process.env.Port;
 server.listen(port, () => {
