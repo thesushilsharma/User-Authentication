@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
 //     res.sendFile(path.join(__dirname, "../client"))
 // })
 
-const port = process.env.Port;
+const port = process.env.Port | 4024;
 server.listen(port, () => {
     console.log(`Server listening on : ${port}`)
 });
