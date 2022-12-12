@@ -5,12 +5,12 @@ const path = require('path');
 require("dotenv").config();
 
 var  { pool , session } = require('./database.js');
-require('./terminal.js');
+//require('./terminal.js');
 
 //CREATE TABLE `test`.`project` (`user` INT(7) NOT NULL AUTO_INCREMENT , `password` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `name` VARCHAR(255) NOT NULL , PRIMARY KEY (`user`), UNIQUE `email` (`email`)) ENGINE = InnoDB;
-const port = process.env.PORT;
-app.listen(port,
-    () => console.log(`Server Started on port ${port}...`));
+const Port = process.env.PORT;
+app.listen(Port,
+    () => console.log(`Server Started on port ${Port}...`));
 
 app.use(express.json())
 //middleware to read req.body.<params>
